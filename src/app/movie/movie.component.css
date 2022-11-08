@@ -1,0 +1,388 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1e1e1e;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1rem;
+    color: #eeeeee;
+    align-items: center;
+}
+
+header a {
+    color: #eeeeee;
+    text-decoration: none;
+
+}
+
+.search {
+    background-color: transparent;
+    border: 2px solid #555555;
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #eee;
+}
+
+
+.search:focus {
+    outline: none;
+    background-color: #555555;
+}
+
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie {
+    background-color: #555555;
+    color: #eee;
+    height: 550px;
+    width: 300px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    margin: 1rem;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.movie img {
+    width: 100%;
+}
+
+.movie-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 0.5rem;
+    margin: 0;
+    letter-spacing: 0.5px;
+    align-items: flex-start;
+}
+
+.movie-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.movie-info span {
+    background-color: #1e1e1e;
+    border-radius: 3px;
+    padding: 0.25rem 0.5rem;
+    font-weight: bold;
+}
+
+.movie-info span.green {
+    color: lawngreen;
+}
+
+.movie-info span.orange {
+    color: darkorange;
+}
+
+.movie-info span.red {
+    color: red;
+}
+
+.serie {
+    background-color: #555555;
+    color: #eee;
+    height: 410px;
+    width: 200px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    margin: 1rem;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.serie img {
+    width: 100%;
+}
+
+.serie-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 0.5rem;
+    margin: 0;
+    letter-spacing: 0.5px;
+    align-items: flex-start;
+}
+
+.serie-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.serie-info span {
+    background-color: #1e1e1e;
+    border-radius: 3px;
+    padding: 0.25rem 0.5rem;
+    font-weight: bold;
+}
+
+.serie-info span.green {
+    color: lawngreen;
+}
+
+.serie-info span.orange {
+    color: darkorange;
+}
+
+.serie-info span.red {
+    color: red;
+}
+
+.overview {
+    background-color: #eeeeee;
+    color: #030315;
+    padding: 1rem;
+    position: absolute;
+    max-height: 100%;
+    overflow: auto;
+    top: 25%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
+    font-size: 1rem;
+}
+
+.movie:hover .overview {
+    transform: translateY(0);
+}
+
+.serie:hover .overview {
+    transform: translateY(0);
+}
+
+
+.overview h3 {
+    margin-top: 0;
+}
+
+#mainNav {
+    font-weight: 400;
+    background-color: #151515;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-decoration: none;
+    color: #eeeeee;
+
+}
+
+#mainNav .navbar-brand {
+    color: #eee;
+    font-size: 1.5rem;
+
+}
+
+#mainNav .navbar-brand:hover {
+    color: #555555;
+}
+
+#mainNav .navbar-nav li.nav-item a.nav-link {
+    color: #fff9f2;
+}
+
+#mainNav .navbar-nav li.nav-item a.nav-link:hover {
+    color: #555555;
+}
+
+
+#mainNav .navbar-nav li.nav-item a.nav-link.active {
+    color: #555555
+}
+
+#mainNav img {
+    height: 1.5rem;
+    padding: 0 0.5rem;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* #030315 w/ opacity */
+}
+
+
+
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: transparent;
+    margin: 10% auto; /* 15% from the top and centered */
+    width: 65%; /* Could be more or less, depending on screen size */
+    border: 0;
+}
+
+.modal-content img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.movie-modal {
+    background-color: #eee;
+    padding: 2rem;
+    border-radius: 1rem;
+    color: #030315;
+    overflow: auto;
+    margin: -10% 2rem 2rem;
+}
+
+.movie-modal iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    border: 0;
+}
+
+
+.movie-modal-title {
+    color: #708ED2;
+    font-size: 2rem;
+}
+
+.movie-modal-note {
+    background-color: #708ED2 ;
+    color: #eeeeee;
+    border-radius: 50%;
+    width: 2.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    text-align: center;
+
+}
+
+.movie-modal-votes {
+    font-size: 0.8rem;
+    color: #aaaaaa;
+}
+
+.genre {
+    background-color: #708ED2;
+    width: fit-content;
+    border-radius: 10px;
+    padding: 0 0.5rem;
+}
+
+.movie-modal-overview {
+    padding: 1rem 0;
+}
+.movie-modal-crew {
+    padding: 1rem 0;
+}
+
+.movie-modal-casting {
+    padding: 1rem 0;
+}
+
+.movie-modal-casting img {
+    width: 50px;
+}
+
+#casting-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.casting-photo {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+    width: 15%;
+    margin: 0.3rem .5rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+
+}
+
+.movie-modal-release-date {
+    font-size: 0.8rem;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+}
+
+.close:hover,
+.close:focus {
+    color: #030315;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*.loading {*/
+/*    opacity: 0;*/
+/*    display: flex;*/
+/*    position: fixed;*/
+/*    bottom: 50px;*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*    transition: opacity .3s ease-in;*/
+/*}*/
+
+/*.loading.show {*/
+/*    opacity: 1;*/
+/*}*/
+
+/*.ball {*/
+/*    background-color: #555555;*/
+/*    border-radius: 50%;*/
+/*    margin: 5px;*/
+/*    height: 10px;*/
+/*    width: 10px;*/
+/*    animation: jump .5s ease-in infinite;*/
+/*}*/
+
+/*.ball:nth-of-type(2) {*/
+/*    animation-delay: 0.1s;*/
+/*}*/
+
+/*.ball:nth-of-type(3) {*/
+/*    animation-delay: 0.2s;*/
+/*}*/
+
+/*@keyframes jump {*/
+/*    0%, 100% {*/
+/*        transform: translateY(0);*/
+/*    }*/
+
+/*    50% {*/
+/*        transform: translateY(-10px);*/
+/*    }*/
+/*}*/
