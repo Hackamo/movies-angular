@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ApiService } from './services/movies.service';
-import { MovieComponent } from './movie/movie.component';
 import { Movie } from './models/movie';
+import { ApiService } from './services/movies.service';
 
 @Component({
   selector: 'app-root',

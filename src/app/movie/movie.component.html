@@ -1,8 +1,21 @@
 <!-- <p>{{ movieInfos.title | json }}</p> -->
-<mat-card>
+<!-- <mat-card>
   <mat-card-header>{{ movieInfos.title }}</mat-card-header>
-  <mat-card-content>{{ movieInfos.overview }}</mat-card-content>
-  <!-- <img mat-card-image />
+  <mat-card-content>{{ movieInfos.overview }}</mat-card-content> -->
+<!-- <img mat-card-image />
   <mat-card-actions></mat-card-actions>
   <mat-card-footer></mat-card-footer> -->
+<!-- </mat-card> -->
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="example-header-image"></div> -->
+    <mat-card-title>{{ movieInfos.title }}</mat-card-title>
+    <!-- <mat-card-subtitle>{{ movieInfos.overview }}</mat-card-subtitle> -->
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+    alt="Photo of a Shiba Inu"
+  />
 </mat-card>
