@@ -14,7 +14,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { MoviePageComponent } from './movie-page/movie-page.component';
+import { TestComponent } from './test/test.component';
 @NgModule({
   imports: [
     BrowserModule,
@@ -27,9 +29,10 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
     MovieModule,
     MatGridListModule,
     MatButtonModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    MatDialogModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, MoviePageComponent, TestComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

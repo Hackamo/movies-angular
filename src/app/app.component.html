@@ -42,4 +42,15 @@
   (scrolled)="onScroll()"
 ></div>
 
-<button (click)="getMovies()">get movies</button>
+<button mat-raised-button class="buttonGetMovies"color="accent" (click)="getMoviesMock()">Get Movies</button>
+
+
+<nav>
+  <ul>
+    <li><a routerLink="/test-component" routerLinkActive="active" ariaCurrentWhenActive="page">test Component</a></li>
+    <li><a routerLink="/page-component" routerLinkActive="active" ariaCurrentWhenActive="page">page Component</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>
+
+

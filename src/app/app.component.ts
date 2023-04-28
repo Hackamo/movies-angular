@@ -13,15 +13,19 @@ export class AppComponent {
   movies: Movie[] = [];
   pagination: number = 0;
 
-  constructor(private httpClient: MovieService) {}
+  constructor(private httpClient: MockService) {}
 
   ngOnInit() {
-    this.getMovies()
+    this.getMoviesMock()
   }
 
   onScroll() {
     console.log("scrolled!!");
     // this.getMovies()
+  }
+
+  onMovieClick() {
+
   }
 
   getMoviesMock() {
