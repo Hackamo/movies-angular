@@ -10,12 +10,14 @@
 <mat-card class="card">
   <img
     mat-card-image
-    src="https://image.tmdb.org/t/p/w1280//ahMxyHMSJXingQr4yJBMzMU9k42.jpg"
+    src="https://image.tmdb.org/t/p/w1280//{{ movieInfos.poster_path }}"
     alt="Photo of a Shiba Inu"
   />
   <div class="movie-info">
     <mat-card-title class="title">{{ movieInfos.title }}</mat-card-title>
-    <mat-card-subtitle [style]="getNoteColor()" class="note">{{ movieInfos.vote_average }}</mat-card-subtitle>
+    <mat-card-subtitle [style]="getNoteColor()" class="note">{{
+      movieInfos.vote_average
+    }}</mat-card-subtitle>
   </div>
 
   <!-- <mat-card-footer>{{ movieInfos.release_date }}</mat-card-footer> -->

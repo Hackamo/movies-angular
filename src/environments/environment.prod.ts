@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   apikey: '3399af3fea42fd17a119ef910e475a6c5',
-  apiRrl: 'https://api.themoviedb.org/3',
+  apiBase: 'https://api.themoviedb.org/3',
   apiPopularity:
     'https://api.themoviedb.org/3/discover/movie?api_key:399af3fea42fd17a119ef910e475a6c5&sort_by:popularity.desc&include_adult:false&include_video:false&page:',
   apiSearch:
