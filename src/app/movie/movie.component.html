@@ -7,14 +7,16 @@
   <mat-card-footer></mat-card-footer> -->
 <!-- </mat-card> -->
 
-<mat-card class="example-card">
+<mat-card class="card">
   <img
     mat-card-image
-    src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+    src="https://image.tmdb.org/t/p/w1280//ahMxyHMSJXingQr4yJBMzMU9k42.jpg"
     alt="Photo of a Shiba Inu"
   />
+  <div class="movie-info">
+    <mat-card-title class="title">{{ movieInfos.title }}</mat-card-title>
+    <mat-card-subtitle [style]="getNoteColor()" class="note">{{ movieInfos.vote_average }}</mat-card-subtitle>
+  </div>
 
-  <mat-card-title>{{ movieInfos.title }}</mat-card-title>
-  <mat-card-subtitle>{{ movieInfos.vote_average }}</mat-card-subtitle>
-  <mat-card-footer>{{ movieInfos.release_date }}</mat-card-footer>
+  <!-- <mat-card-footer>{{ movieInfos.release_date }}</mat-card-footer> -->
 </mat-card>

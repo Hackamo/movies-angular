@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Movie } from './models/movie';
 import { MockService } from './services/mock.service';
+import { MovieService } from './services/movies.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +13,14 @@ export class AppComponent {
   movies: Movie[] = [];
   pagination: number = 0;
 
-  constructor(private httpClient: MockService) {}
+  constructor(private httpClient: MovieService) {}
 
   ngOnInit() {
     this.getMovies()
+  }
+
+  onScroll() {
+    console.log("scrolled!!");
   }
 
   getMovies() {
