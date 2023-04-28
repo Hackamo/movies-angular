@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MovieModule } from './movie/movie.module';
 import { AppComponent } from './app.component';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { AppComponent } from './app.component';
     MatToolbarModule,
     MatIconModule,
     MovieModule,
+    MatGridListModule,
   ],
   declarations: [AppComponent],
   providers: [],

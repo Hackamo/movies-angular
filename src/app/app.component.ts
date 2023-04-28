@@ -15,14 +15,14 @@ export class AppComponent {
   constructor(private httpClient: MockService) {}
 
   ngOnInit() {
-    // this.refreshMovies()
+    this.getMovies()
   }
 
   getMovies() {
     this.pagination += 1;
     this.httpClient.getMovies(this.pagination).subscribe((data: Movie[]) => {
-
       for (let i = 0; i < data.length; i++) {
+        console.log(data[i])
         this.movies.push(data[i]);
       }
     });
