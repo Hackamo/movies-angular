@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   constructor(private httpClient: HttpClient) {}
 
+  /**
   api_key = '399af3fea42fd17a119ef910e475a6c5';
   api_url = 'https://api.themoviedb.org/3';
   api_popularity =
@@ -28,12 +30,10 @@ export class ApiService {
     '&sort_by=revenue.desc&include_adult=false&include_video=false&page=';
   api_genre_fr = '/genre/movie/list?api_key=' + this.api_key + '';
   video_key = '';
-
+*/
   ngOnInit() {}
 
   getMovies(pagination: number): Observable<any> {
-    return this.httpClient.get<any>(
-      this.api_url + this.api_popularity + pagination
-    );
+    return this.httpClient.get<any>(environment.apiPopularity);
   }
 }
