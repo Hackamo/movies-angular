@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class MoviePageComponent {
 
+  ngOnInit() {
+    console.log('moviePage')
+  }
 }

@@ -8,7 +8,14 @@
     <mat-icon>menu</mat-icon>
   </button>
 -->
-  <span>Movies</span>
+  <span
+    routerLink=""
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    style = "cursor: pointer"
+  >
+    Movies
+  </span>
   <span class="example-spacer"></span>
   <!--
     <button
@@ -28,29 +35,4 @@
   -->
 </mat-toolbar>
 
-<div class="main">
-  <div *ngFor="let movie of movies">
-    <app-movie [movieInfos]="movie"></app-movie>
-  </div>
-</div>
-
-<div
-  class="main-panel"
-  infiniteScroll
-  [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="4000"
-  (scrolled)="onScroll()"
-></div>
-
-<button mat-raised-button class="buttonGetMovies"color="accent" (click)="getMoviesMock()">Get Movies</button>
-
-
-<nav>
-  <ul>
-    <li><a routerLink="/test-component" routerLinkActive="active" ariaCurrentWhenActive="page">test Component</a></li>
-    <li><a routerLink="/page-component" routerLinkActive="active" ariaCurrentWhenActive="page">page Component</a></li>
-  </ul>
-</nav>
 <router-outlet></router-outlet>
-
-

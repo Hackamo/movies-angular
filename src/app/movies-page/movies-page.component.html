@@ -1,0 +1,15 @@
+<div class="main">
+  <div *ngFor="let movie of movies">
+    <app-movie-card [movieInfos]="movie"></app-movie-card>
+  </div>
+</div>
+
+<div
+  class="main-panel"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="4000"
+  (scrolled)="onScroll()"
+></div>
+
+<button mat-raised-button class="buttonGetMovies"color="accent" (click)="getMoviesMock()">Get Movies</button>

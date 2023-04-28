@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { Movie } from '../models/movie';
 import { NgStyle } from '@angular/common';
 @Component({
-  selector: 'app-movie',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.css'],
+  selector: 'app-movie-card',
+  templateUrl: './movie-card.component.html',
+  styleUrls: ['./movie-card.component.css'],
 })
-export class MovieComponent {
+export class MovieCardComponent {
   @Input() movieInfos!: Movie;
 
   ngOnInit() {

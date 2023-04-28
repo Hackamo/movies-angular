@@ -10,40 +10,6 @@ import { MovieService } from './services/movies.service';
 })
 export class AppComponent {
   title = 'movies-angular';
-  movies: Movie[] = [];
-  pagination: number = 0;
 
-  constructor(private httpClient: MockService) {}
-
-  ngOnInit() {
-    this.getMoviesMock()
-  }
-
-  onScroll() {
-    console.log("scrolled!!");
-    // this.getMovies()
-  }
-
-  onMovieClick() {
-
-  }
-
-  getMoviesMock() {
-    this.pagination += 1;
-    this.httpClient.getMovies(this.pagination).subscribe((data: Movie[]) => {
-      for (let i = 0; i < data.length; i++) {
-        console.log(data[i])
-        this.movies.push(data[i]);
-      }
-    });
-  }
-
-  getMovies() {
-    this.pagination += 1;
-    this.httpClient.getMovies(this.pagination).subscribe((data) => {
-      for (const movie of data.results) {
-        this.movies.push(movie);
-      }
-    });
-  }
+  onMovieClick() {}
 }
