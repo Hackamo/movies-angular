@@ -1,11 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({ providedIn: 'root' })
-export class ApiService {
+export class MovieService {
   constructor(private httpClient: HttpClient) {}
 
   /**

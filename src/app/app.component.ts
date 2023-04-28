@@ -20,9 +20,10 @@ export class AppComponent {
 
   getMovies() {
     this.pagination += 1;
-    this.httpClient.getMoviesMock().subscribe((data: { results: any; }) => {
-      for (const movie of data.results) {
-        this.movies.push(movie);
+    this.httpClient.getMovies(this.pagination).subscribe((data: Movie[]) => {
+
+      for (let i = 0; i < data.length; i++) {
+        this.movies.push(data[i]);
       }
     });
   }

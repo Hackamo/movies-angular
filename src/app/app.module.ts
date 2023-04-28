@@ -4,14 +4,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { MovieComponent } from './movie/movie.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { MovieModule } from './movie/movie.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent, MovieComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,7 +20,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
+    MovieModule,
   ],
+  declarations: [AppComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
