@@ -11,15 +11,14 @@ export class MovieComponent {
   movieInfos!: Movie;
   movieId!: string;
   detailsMovies!:detailsMovies;
-
+  isLoaded = false;
   constructor(private httpClient: MovieService) {}
 
   ngOnInit() {
     this.movieId = sessionStorage.getItem('movieId')!;
-
     this.httpClient.getMovieDetails(this.movieId).subscribe((data: any) => {
+      this.isLoaded = true;
       this.detailsMovies = data;
-      console.log(this.detailsMovies.title)
     });
   }
 }

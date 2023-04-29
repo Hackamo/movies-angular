@@ -17,6 +17,8 @@ import { MovieComponent } from './movie/movie.component';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -31,6 +33,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     InfiniteScrollModule,
     MatDialogModule,
     LayoutModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
     AppComponent,

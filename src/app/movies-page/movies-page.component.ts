@@ -15,7 +15,6 @@ export class MoviesPageComponent {
   constructor(private httpClient: MovieService) {}
 
   ngOnInit() {
-    console.log('moviesPage')
     this.getMovies();
   }
 
@@ -28,7 +27,6 @@ export class MoviesPageComponent {
     this.pagination += 1;
     this.httpClient.getMovies(this.pagination).subscribe((data: Movie[]) => {
       for (let i = 0; i < data.length; i++) {
-        console.log(data[i]);
         this.movies.push(data[i]);
       }
     });

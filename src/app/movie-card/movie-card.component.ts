@@ -15,7 +15,6 @@ export class MovieCardComponent {
   constructor(private responsive: BreakpointObserver) {}
 
   ngOnInit() {
-    // console.log(this.movieInfos.title)
     this.responsive.observe(Breakpoints.HandsetPortrait).subscribe((result) => {
       this.isPhonePortrait = false;
       if (result.matches) {
@@ -25,8 +24,6 @@ export class MovieCardComponent {
   }
 
   saveId() {
-    console.log(this.movieInfos.id);
-
     sessionStorage.setItem('movieId', this.movieInfos.id);
   }
 
@@ -34,11 +31,11 @@ export class MovieCardComponent {
     if (this.movieInfos.vote_average) {
       if (Number(this.movieInfos.vote_average) > 7) {
         return {
-          color: 'rgb(137, 220, 52)',
+          color: 'rgb(135, 220, 50)',
         };
       }
       if (this.movieInfos.vote_average) {
-        if (Number(this.movieInfos.vote_average) > 6) {
+        if (Number(this.movieInfos.vote_average) > 5) {
           return {
             color: 'orange',
           };

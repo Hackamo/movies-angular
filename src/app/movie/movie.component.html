@@ -1,1 +1,16 @@
-<p>movie-page works! Corentin</p>
+<div *ngIf="!isLoaded">
+  <mat-progress-spinner
+    class="example-margin"
+    color="accent"
+    mode=indeterminate
+  >
+  </mat-progress-spinner>
+</div>
+
+<div *ngIf="isLoaded">
+  <img
+    src="https://image.tmdb.org/t/p/w1280//{{
+      this.detailsMovies.backdrop_path
+    }}"
+  />
+</div>
