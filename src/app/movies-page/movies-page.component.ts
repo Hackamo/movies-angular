@@ -16,7 +16,7 @@ export class MoviesPageComponent {
 
   ngOnInit() {
     console.log('moviesPage')
-    this.getMoviesMock();
+    this.getMovies();
   }
 
   onScroll() {
