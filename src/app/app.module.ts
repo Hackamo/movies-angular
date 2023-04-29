@@ -13,10 +13,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MoviePageComponent } from './movie/movie.component';
+import { MovieComponent } from './movie/movie.component';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
-import {LayoutModule} from '@angular/cdk/layout';
+import { LayoutModule } from '@angular/cdk/layout';
 @NgModule({
   imports: [
     BrowserModule,
@@ -30,15 +30,17 @@ import {LayoutModule} from '@angular/cdk/layout';
     MatButtonModule,
     InfiniteScrollModule,
     MatDialogModule,
-    LayoutModule
+    LayoutModule,
   ],
-  declarations: [AppComponent, MoviePageComponent, MoviesPageComponent, MovieCardComponent],
+  declarations: [
+    AppComponent,
+    MovieComponent,
+    MoviesPageComponent,
+    MovieCardComponent,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
 
-// ng deploy --base-href=https://Hackamo.github.io//movies-angular/
-
 platformBrowserDynamic().bootstrapModule(AppModule);
-

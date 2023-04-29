@@ -3,7 +3,7 @@ import { Movie } from '../models/movie';
 import { NgStyle } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
-  selector: 'app-movie',
+  selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.css'],
 })
@@ -22,6 +22,12 @@ export class MovieCardComponent {
         this.isPhonePortrait = true;
       }
     });
+  }
+
+  saveId() {
+    console.log(this.movieInfos.id);
+
+    sessionStorage.setItem('movieId', this.movieInfos.id);
   }
 
   getNoteColor() {

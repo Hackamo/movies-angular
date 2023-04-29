@@ -9,6 +9,7 @@
 
 <mat-card
   routerLink="movie"
+  (click)="saveId()"
   class="card"
   [ngClass]="{ 'is-phone-portrait': isPhonePortrait }"
 >

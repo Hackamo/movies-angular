@@ -1,13 +1,25 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { Movie } from '../models/movie';
+import { MovieService } from '../services/movies.service';
+import { detailsMovies } from '../models/detailsmovie';
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.css']
+  styleUrls: ['./movie.component.css'],
 })
-export class MoviePageComponent {
+export class MovieComponent {
+  movieInfos!: Movie;
+  movieId!: string;
+  detailsMovies!:detailsMovies;
+
+  constructor(private httpClient: MovieService) {}
 
   ngOnInit() {
-    console.log('moviePage')
+    this.movieId = sessionStorage.getItem('movieId')!;
+
+    this.httpClient.getMovieDetails(this.movieId).subscribe((data: any) => {
+      this.detailsMovies = data;
+      console.log(this.detailsMovies.title)
+    });
   }
 }
