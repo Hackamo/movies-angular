@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from '../models/movie';
 import { NgStyle } from '@angular/common';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -9,8 +10,18 @@ import { NgStyle } from '@angular/common';
 export class MovieCardComponent {
   @Input() movieInfos!: Movie;
 
+  isPhonePortrait!: boolean;
+
+  constructor(private responsive: BreakpointObserver) {}
+
   ngOnInit() {
     // console.log(this.movieInfos.title)
+    this.responsive.observe(Breakpoints.HandsetPortrait).subscribe((result) => {
+      this.isPhonePortrait = false;
+      if (result.matches) {
+        this.isPhonePortrait = true;
+      }
+    });
   }
 
   getNoteColor() {

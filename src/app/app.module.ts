@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { MoviePageComponent } from './movie-page/movie-page.component';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
 import { MovieCardComponent } from './movie/movie-card.component';
+import {LayoutModule} from '@angular/cdk/layout';
 @NgModule({
   imports: [
     BrowserModule,
@@ -28,7 +29,8 @@ import { MovieCardComponent } from './movie/movie-card.component';
     MatGridListModule,
     MatButtonModule,
     InfiniteScrollModule,
-    MatDialogModule
+    MatDialogModule,
+    LayoutModule
   ],
   declarations: [AppComponent, MoviePageComponent, MoviesPageComponent, MovieCardComponent],
   providers: [],
