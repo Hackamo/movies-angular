@@ -3,7 +3,7 @@ import { Movie } from '../models/movie';
 import { NgStyle } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
-  selector: 'app-movie-card',
+  selector: 'app-movie',
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.css'],
 })

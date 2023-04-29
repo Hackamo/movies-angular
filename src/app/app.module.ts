@@ -13,9 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MoviePageComponent } from './movie-page/movie-page.component';
+import { MoviePageComponent } from './movie/movie.component';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
-import { MovieCardComponent } from './movie/movie-card.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 import {LayoutModule} from '@angular/cdk/layout';
 @NgModule({
   imports: [

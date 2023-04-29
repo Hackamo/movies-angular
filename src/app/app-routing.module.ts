@@ -2,7 +2,7 @@ import { MoviesPageComponent } from './movies-page/movies-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { MoviePageComponent } from './movie-page/movie-page.component';
+import { MoviePageComponent } from './movie/movie.component';
 
 const routes: Routes = [
   { path: '', component: MoviesPageComponent },
