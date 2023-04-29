@@ -12,7 +12,7 @@ export class MoviesPageComponent {
   movies: Movie[] = [];
   pagination: number = 0;
 
-  constructor(private httpClient: MockService) {}
+  constructor(private httpClient: MovieService) {}
 
   ngOnInit() {
     console.log('moviesPage')

@@ -36,5 +36,7 @@ import { MovieCardComponent } from './movie/movie-card.component';
 })
 export class AppModule {}
 
+// ng deploy --base-href=https://Hackamo.github.io//movies-angular/
+
 platformBrowserDynamic().bootstrapModule(AppModule);
 
