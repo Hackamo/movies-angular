@@ -43,4 +43,10 @@ export class MovieService {
       this.api_url  + this.api_movie + movieId + '?api_key='+ this.api_key
     );
   }
+
+  getYoutubeVideo(movieId: string): Observable<any> {
+    return this.httpClient.get<any>(
+      this.api_url  + this.api_movie + movieId + '/videos' + '?api_key='+ this.api_key
+    );
+  }
 }

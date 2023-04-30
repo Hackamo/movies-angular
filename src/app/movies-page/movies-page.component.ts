@@ -15,6 +15,8 @@ export class MoviesPageComponent {
   constructor(private httpClient: MovieService) {}
 
   ngOnInit() {
+    // TODO : later for optimize nb api calls
+    // if (!sessionStorage.getItem('movieId')) {}
     this.getMovies();
   }
 
