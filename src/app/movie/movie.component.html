@@ -34,12 +34,28 @@
       </p>
       <iframe
         *ngIf="isVideoLoaded"
-        width="70%"
-        height="500"
+        width="80%"
+        height="800"
+        class="iframe"
         [src]="videoSafeUrl"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>
+      <div class="cast">
+        <mat-card *ngFor="let cast of castingList" class="actorCard">
+          <mat-card-subtitle>{{
+            cast.name
+          }}</mat-card-subtitle>
+          <mat-card-content
+            ><img
+              class="actor"
+              mat-card-image
+              src="https://image.tmdb.org/t/p/w1280//{{ cast.profile_path }}"
+          /></mat-card-content>
+        </mat-card>
+      </div>
+
+      >
     </mat-card-content>
 
     <!-- <mat-card-footer>{{ movieInfos.release_date }}</mat-card-footer> -->

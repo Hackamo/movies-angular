@@ -29,6 +29,7 @@ export class MovieService {
     '&sort_by=revenue.desc&include_adult=false&include_video=false&page=';
   api_genre_fr = '/genre/movie/list?api_key=' + this.api_key + '';
   video_key = '';
+  languageFR ='fr'
 
   ngOnInit() {}
 
@@ -40,13 +41,19 @@ export class MovieService {
 
   getMovieDetails(movieId: string): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url  + this.api_movie + movieId + '?api_key='+ this.api_key
+      this.api_url  + this.api_movie + movieId + '?api_key='+ this.api_key+'&language='+this.languageFR
     );
   }
 
   getYoutubeVideo(movieId: string): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url  + this.api_movie + movieId + '/videos' + '?api_key='+ this.api_key
+      this.api_url  + this.api_movie + movieId + '/videos' + '?api_key='+ this.api_key+'&language='+this.languageFR
+    );
+  }
+
+  getCasting(movieId: string): Observable<any> {
+    return this.httpClient.get<any>(
+      this.api_url  + this.api_movie + movieId + '/credits' + '?api_key='+ this.api_key+'&language='+this.languageFR
     );
   }
 }

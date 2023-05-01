@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Movie } from '../models/movie';
 import { MovieService } from '../services/movies.service';
@@ -11,8 +11,6 @@ import { detailsMovies } from './../models/detailsmovie';
   styleUrls: ['./movie.component.scss'],
 })
 export class MovieComponent {
-  @ViewChild('iframe') iframe!: ElementRef;
-
   movieInfos!: Movie;
   movieId!: string;
   detailsMovies!: detailsMovies;
@@ -23,6 +21,7 @@ export class MovieComponent {
   videoKey!: string;
   videoSafeUrl!: SafeResourceUrl;
   videoUrl = 'https://www.youtube.com/embed/';
+  castingList!: any[];
   objectKeys = Object.keys;
 
   constructor(
@@ -38,6 +37,7 @@ export class MovieComponent {
         this.isPhonePortrait = true;
       }
     });
+
     this.movieId = sessionStorage.getItem('movieId')!;
     this.httpClient.getMovieDetails(this.movieId).subscribe((data: any) => {
       this.isLoaded = true;
@@ -47,13 +47,20 @@ export class MovieComponent {
         this.genres.push(this.detailsMovies.genres[i].name);
       }
     });
+
     this.httpClient.getYoutubeVideo(this.movieId).subscribe((data: any) => {
       this.videoKey = data.results[0].key;
       this.isVideoLoaded = true;
       console.log(this.videoKey);
       this.videoSafeUrl = this.DomSanitizer.bypassSecurityTrustResourceUrl(
-        'https://www.youtube.com/embed/' + this.videoKey
+        this.videoUrl + this.videoKey
       );
+    });
+
+    this.httpClient.getCasting(this.movieId).subscribe((data: any) => {
+      this.castingList = data.cast;
+      this.castingList = this.castingList.filter((cast) => cast.profile_path != null);
+      this.castingList = this.castingList.slice(0,14)
     });
   }
 }

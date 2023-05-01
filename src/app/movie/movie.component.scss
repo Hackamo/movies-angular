@@ -1,6 +1,4 @@
-.mat-card {
 
-}
 .genre {
   background-color: #708ed2;
   width: fit-content;
@@ -28,6 +26,22 @@
   padding: 1rem 0 0 1rem;
 }
 
+.cast {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.actorCard{
+  display: flex;
+  align-items: center;
+  margin: 0.5rem;
+}
+.actor{
+  width: 8rem;
+}
+
 .is-phone-portrait .genre {
   font-size: 11px;
 }
@@ -35,5 +49,10 @@
 .is-phone-portrait .title {
   font-size: 20px;
 }
+
+.is-phone-portrait .iframe {
+  height: 150px;
+}
+
 
 
