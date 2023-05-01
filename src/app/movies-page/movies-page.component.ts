@@ -6,7 +6,7 @@ import { MovieService } from './../services/movies.service';
 @Component({
   selector: 'app-movies-page',
   templateUrl: './movies-page.component.html',
-  styleUrls: ['./movies-page.component.css'],
+  styleUrls: ['./movies-page.component.scss'],
 })
 export class MoviesPageComponent {
   movies: Movie[] = [];

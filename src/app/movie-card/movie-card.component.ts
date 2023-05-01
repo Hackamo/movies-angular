@@ -5,7 +5,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.css'],
+  styleUrls: ['./movie-card.component.scss'],
 })
 export class MovieCardComponent {
   @Input() movieInfos!: Movie;
