@@ -1,5 +1,5 @@
 import { detailsMovies } from './../models/detailsmovie';
-import { Component, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Movie } from '../models/movie';
 import { MovieService } from '../services/movies.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -18,6 +18,9 @@ import {
   styleUrls: ['./movie.component.css'],
 })
 export class MovieComponent {
+  @ViewChild('iframe')  iframe!: ElementRef ;
+
+
   movieInfos!: Movie;
   movieId!: string;
   detailsMovies!: detailsMovies;
@@ -27,13 +30,14 @@ export class MovieComponent {
   genres: string[] = [];
   videoKey!: string;
   videoSafeUrl!: SafeResourceUrl;
-
-
+  videoUrl = 'https://www.youtube.com/embed/';
   objectKeys = Object.keys;
 
   constructor(
     private httpClient: MovieService,
-    private responsive: BreakpointObserver
+    private responsive: BreakpointObserver,
+    private hostElement: ElementRef,
+
   ) {}
 
   ngOnInit() {
@@ -56,8 +60,14 @@ export class MovieComponent {
       console.log(data.results[0].key);
       this.videoKey = data.results[0].key;
       this.isVideoLoaded = true;
+      console.log(this.iframe);
+      const iframe = document.getElementById('iframe')
+      // this.iframe.nativeElement.setAttribute(
+        //   'src',
+        //   'https://www.youtube.com/embed/' + this.videoKey
+        // );
+        iframe?.setAttribute('src','test')
+        console.log(iframe);
     });
   }
-
-
 }
