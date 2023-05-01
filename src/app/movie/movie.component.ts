@@ -1,16 +1,9 @@
-import { detailsMovies } from './../models/detailsmovie';
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Movie } from '../models/movie';
 import { MovieService } from '../services/movies.service';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import {
-  DomSanitizer,
-  SafeHtml,
-  SafeStyle,
-  SafeScript,
-  SafeUrl,
-  SafeResourceUrl,
-} from '@angular/platform-browser';
+import { detailsMovies } from './../models/detailsmovie';
 
 @Component({
   selector: 'app-movie',
@@ -18,8 +11,7 @@ import {
   styleUrls: ['./movie.component.scss'],
 })
 export class MovieComponent {
-  @ViewChild('iframe')  iframe!: ElementRef ;
-
+  @ViewChild('iframe') iframe!: ElementRef;
 
   movieInfos!: Movie;
   movieId!: string;
@@ -36,9 +28,7 @@ export class MovieComponent {
   constructor(
     private httpClient: MovieService,
     private responsive: BreakpointObserver,
-    private hostElement: ElementRef,
     private DomSanitizer: DomSanitizer
-
   ) {}
 
   ngOnInit() {
@@ -61,14 +51,9 @@ export class MovieComponent {
       this.videoKey = data.results[0].key;
       this.isVideoLoaded = true;
       console.log(this.videoKey);
-      this.videoSafeUrl= this.DomSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.videoKey)
-      // const iframe = document.getElementById('iframe')
-      // this.iframe.nativeElement.setAttribute(
-        //   'src',
-        //   'https://www.youtube.com/embed/' + this.videoKey
-        // );
-        // iframe?.setAttribute('src','test')
-        // console.log(iframe);
+      this.videoSafeUrl = this.DomSanitizer.bypassSecurityTrustResourceUrl(
+        'https://www.youtube.com/embed/' + this.videoKey
+      );
     });
   }
 }

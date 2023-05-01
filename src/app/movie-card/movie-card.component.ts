@@ -1,7 +1,6 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, Input } from '@angular/core';
 import { Movie } from '../models/movie';
-import { NgStyle } from '@angular/common';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',

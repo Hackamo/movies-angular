@@ -32,11 +32,10 @@
       <p>
         {{ detailsMovies.overview }}
       </p>
-      <!-- <iframe *ngIf="isVideoLoaded"  src="https://www.youtube.com/embed/LTFGH0rJ-EY" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-      <!-- src="{{ 'https://www.youtube.com/embed/' + this.videoKey | safe : 'url'}}" -->
       <iframe
         *ngIf="isVideoLoaded"
-        width="70%" height="500"
+        width="70%"
+        height="500"
         [src]="videoSafeUrl"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
