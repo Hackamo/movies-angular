@@ -1,0 +1,39 @@
+.mat-card {
+
+}
+.genre {
+  background-color: #708ed2;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 0 0.5rem;
+  margin-right: 4px;
+}
+
+.note {
+  background-color: #1e1e1e;
+  width: fit-content;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem !important;
+  font-weight: bold;
+  color: aliceblue;
+  font-size: 12px;
+  border-radius: 20px;
+  margin-left: 1rem;
+}
+
+
+.title {
+  color: #708ed2;
+  font-size: 2rem;
+  padding: 1rem 0 0 1rem;
+}
+
+.is-phone-portrait .genre {
+  font-size: 11px;
+}
+
+.is-phone-portrait .title {
+  font-size: 20px;
+}
+
+

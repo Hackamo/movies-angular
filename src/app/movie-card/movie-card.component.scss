@@ -33,9 +33,28 @@
   padding: 0.3rem 0.5rem 0.3rem 0.5rem !important;
   font-weight: bold;
   color: aliceblue;
-  margin-left: 1rem;
+
 
 }
 
+.is-phone-portrait {
+  width: 8rem;
+  margin: 0.2rem 0.2rem 0.2rem ;
+  justify-content: center;
+}
+.is-phone-portrait .movie-info {
+  padding: 8px;
+
+}
+
+.is-phone-portrait .title {
+  font-size: 12px;
+  width: 5rem;
+}
+.is-phone-portrait .note {
+  font-size: 10px;
+  border-radius: 20px;
+
+}
 
 

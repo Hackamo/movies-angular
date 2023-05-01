@@ -1,0 +1,47 @@
+<div *ngIf="!isLoaded">
+  <mat-progress-spinner
+    class="example-margin"
+    color="accent"
+    mode="indeterminate"
+  >
+  </mat-progress-spinner>
+</div>
+
+<div *ngIf="isLoaded">
+  <mat-card
+    [ngClass]="{ 'is-phone-portrait': isPhonePortrait }"
+    class="mat-card"
+  >
+    <img
+      mat-card-image
+      src="https://image.tmdb.org/t/p/w1280//{{
+        this.detailsMovies.backdrop_path
+      }}"
+    />
+    <mat-card-title class="title">{{ detailsMovies.title }}</mat-card-title>
+    <mat-card-header>
+      <div *ngFor="let genre of this.genres">
+        <div class="genre">{{ genre }}</div>
+      </div>
+    </mat-card-header>
+    <mat-card-header>Date de sortie: 2023-04-05</mat-card-header>
+    <mat-card-subtitle [style]="" class="note">
+      {{ detailsMovies.vote_average | number : "1.0-1" }}
+    </mat-card-subtitle>
+    <mat-card-content>
+      <p>
+        {{ detailsMovies.overview }}
+      </p>
+      <iframe
+        *ngIf="isVideoLoaded"
+        width="70%"
+        height="500"
+        [src]="videoSafeUrl"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </mat-card-content>
+
+    <!-- <mat-card-footer>{{ movieInfos.release_date }}</mat-card-footer> -->
+  </mat-card>
+</div>

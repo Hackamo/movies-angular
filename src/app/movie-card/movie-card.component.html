@@ -7,17 +7,22 @@
   <mat-card-footer></mat-card-footer> -->
 <!-- </mat-card> -->
 
-<mat-card routerLink = "movie" class="card">
+<mat-card
+  routerLink="movie"
+  (click)="saveId()"
+  class="card"
+  [ngClass]="{ 'is-phone-portrait': isPhonePortrait }"
+>
   <img
     mat-card-image
     src="https://image.tmdb.org/t/p/w1280//{{ movieInfos.poster_path }}"
-    alt="Photo of a Shiba Inu"
+    alt="Photo of movie {{movieInfos.title}}"
   />
   <div class="movie-info">
     <mat-card-title class="title">{{ movieInfos.title }}</mat-card-title>
-    <mat-card-subtitle [style]="getNoteColor()" class="note">{{
-      movieInfos.vote_average
-    }}</mat-card-subtitle>
+    <mat-card-subtitle [style]="getNoteColor()" class="note"
+      > {{ movieInfos.vote_average }}</mat-card-subtitle
+    >
   </div>
 
   <!-- <mat-card-footer>{{ movieInfos.release_date }}</mat-card-footer> -->
