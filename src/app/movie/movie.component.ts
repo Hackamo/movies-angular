@@ -28,12 +28,12 @@ export class MovieComponent {
   videoKey!: string;
   videoSafeUrl!: SafeResourceUrl;
 
+
   objectKeys = Object.keys;
 
   constructor(
     private httpClient: MovieService,
-    private responsive: BreakpointObserver,
-    private sanitizer: DomSanitizer
+    private responsive: BreakpointObserver
   ) {}
 
   ngOnInit() {
@@ -59,9 +59,5 @@ export class MovieComponent {
     });
   }
 
-  getIframeSource() {
-    this.videoSafeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-      this.videoKey
-    );
-  }
+
 }

@@ -35,7 +35,9 @@
       <!-- <iframe *ngIf="isVideoLoaded"  src="https://www.youtube.com/embed/LTFGH0rJ-EY" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
       <iframe
         *ngIf="isVideoLoaded"
-        src={{getIframeSource()}}
+        src="{{
+          'https://www.youtube.com/embed/' + this.videoKey | safe : 'url'
+        }}"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>

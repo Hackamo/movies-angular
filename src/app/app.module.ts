@@ -18,6 +18,7 @@ import { MoviesPageComponent } from './movies-page/movies-page.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SafePipe } from './services/pipe';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MovieComponent,
     MoviesPageComponent,
     MovieCardComponent,
+    SafePipe
   ],
   providers: [],
   bootstrap: [AppComponent],
