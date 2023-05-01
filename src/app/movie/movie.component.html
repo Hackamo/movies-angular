@@ -36,10 +36,8 @@
       <!-- src="{{ 'https://www.youtube.com/embed/' + this.videoKey | safe : 'url'}}" -->
       <iframe
         *ngIf="isVideoLoaded"
-        #iframe
-        id="iframe"
-        name="iframe"
-        src=""
+        width="70%" height="500"
+        [src]="videoSafeUrl"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>

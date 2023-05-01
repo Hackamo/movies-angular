@@ -37,6 +37,7 @@ export class MovieComponent {
     private httpClient: MovieService,
     private responsive: BreakpointObserver,
     private hostElement: ElementRef,
+    private DomSanitizer: DomSanitizer
 
   ) {}
 
@@ -57,17 +58,17 @@ export class MovieComponent {
       }
     });
     this.httpClient.getYoutubeVideo(this.movieId).subscribe((data: any) => {
-      console.log(data.results[0].key);
       this.videoKey = data.results[0].key;
       this.isVideoLoaded = true;
-      console.log(this.iframe);
-      const iframe = document.getElementById('iframe')
+      console.log(this.videoKey);
+      this.videoSafeUrl= this.DomSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.videoKey)
+      // const iframe = document.getElementById('iframe')
       // this.iframe.nativeElement.setAttribute(
         //   'src',
         //   'https://www.youtube.com/embed/' + this.videoKey
         // );
-        iframe?.setAttribute('src','test')
-        console.log(iframe);
+        // iframe?.setAttribute('src','test')
+        // console.log(iframe);
     });
   }
 }
