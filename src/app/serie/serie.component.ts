@@ -7,10 +7,10 @@ import { detailsMovies } from './../models/detailsmovie';
 
 @Component({
   selector: 'app-movie',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.scss'],
+  templateUrl: './serie.component.html',
+  styleUrls: ['./serie.component.scss'],
 })
-export class MovieComponent {
+export class SerieComponent {
   movieInfos!: Movie;
   movieId!: string;
   detailsMovies!: detailsMovies;
@@ -36,19 +36,21 @@ export class MovieComponent {
       if (result.matches) {
         this.isPhonePortrait = true;
       }
+      console.log(this.detailsMovies)
     });
 
     this.movieId = sessionStorage.getItem('movieId')!;
-    this.httpClient.getMovieDetails(this.movieId).subscribe((data: any) => {
+    this.httpClient.getSeriesDetails(this.movieId).subscribe((data: any) => {
       this.isLoaded = true;
       this.detailsMovies = data;
       console.log(data);
-      for (let i of this.objectKeys(this.detailsMovies.genres)) {
-        this.genres.push(this.detailsMovies.genres[i].name);
-      }
+
     });
 
-    this.httpClient.getMovieYoutubeVideo(this.movieId).subscribe((data: any) => {
+    this.httpClient.getSeriesYoutubeVideo(this.movieId).subscribe((data: any) => {
+      console.log(data);
+      console.log("corentin");
+
       this.videoKey = data.results[0].key;
       this.isVideoLoaded = true;
       console.log(this.videoKey);
@@ -57,7 +59,7 @@ export class MovieComponent {
       );
     });
 
-    this.httpClient.getCastingMovie(this.movieId).subscribe((data: any) => {
+    this.httpClient.getCastingSeries(this.movieId).subscribe((data: any) => {
       this.castingList = data.cast;
       this.castingList = this.castingList.filter((cast) => cast.profile_path != null);
       this.castingList = this.castingList.slice(0,14)

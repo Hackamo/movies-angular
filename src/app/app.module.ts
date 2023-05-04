@@ -15,10 +15,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MovieComponent } from './movie/movie.component';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
+import { SeriesPageComponent } from './series-page/series-page.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SafePipe } from './services/pipe';
+import { SerieComponent } from './serie/serie.component';
 
 @NgModule({
   imports: [
@@ -34,14 +36,16 @@ import { SafePipe } from './services/pipe';
     InfiniteScrollModule,
     MatDialogModule,
     LayoutModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   declarations: [
     AppComponent,
     MovieComponent,
     MoviesPageComponent,
+    SeriesPageComponent,
     MovieCardComponent,
-    SafePipe
+    SafePipe,
+    SerieComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

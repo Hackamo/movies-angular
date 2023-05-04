@@ -8,7 +8,7 @@
 <!-- </mat-card> -->
 
 <mat-card
-  routerLink="movie"
+  routerLink={{routerType}}
   (click)="saveId()"
   class="card"
   [ngClass]="{ 'is-phone-portrait': isPhonePortrait }"
@@ -19,7 +19,7 @@
     alt="Photo of movie {{movieInfos.title}}"
   />
   <div class="movie-info">
-    <mat-card-title class="title">{{ movieInfos.title }}</mat-card-title>
+    <mat-card-title class="title">{{ movieInfos.title ? movieInfos.title : movieInfos.name  }}</mat-card-title>
     <mat-card-subtitle [style]="getNoteColor()" class="note"
       > {{ movieInfos.vote_average }}</mat-card-subtitle
     >

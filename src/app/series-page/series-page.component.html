@@ -1,0 +1,8 @@
+<div class="main">
+  <div *ngFor="let serie of series">
+    <app-movie-card [movieInfos]="serie"></app-movie-card>
+  </div>
+</div>
+
+
+<button mat-raised-button class="buttonGetSeries"color="accent" (click)="getSeries()">Get Series</button>

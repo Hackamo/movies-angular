@@ -18,12 +18,8 @@
         this.detailsMovies.backdrop_path
       }}"
     />
-    <mat-card-title class="title">{{ detailsMovies.title }}</mat-card-title>
-    <mat-card-header>
-      <div *ngFor="let genre of this.genres">
-        <div class="genre">{{ genre }}</div>
-      </div>
-    </mat-card-header>
+    <mat-card-title class="title">{{ detailsMovies.name }}</mat-card-title>
+
     <mat-card-header>Date de sortie: 2023-04-05</mat-card-header>
     <mat-card-subtitle [style]="" class="note">
       {{ detailsMovies.vote_average | number : "1.0-1" }}

@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar class="toolbar">
   <!--
   <button
     mat-icon-button
@@ -8,15 +8,25 @@
     <mat-icon>menu</mat-icon>
   </button>
 -->
-  <span
+  <h1
+    class="title-toolbar"
     routerLink=""
     routerLinkActive="active"
     ariaCurrentWhenActive="page"
-    style = "cursor: pointer"
+    style="cursor: pointer"
   >
     Movies
-  </span>
-  <span class="example-spacer"></span>
+  </h1>
+
+  <h1
+    class="title-toolbar"
+    routerLink="series"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    style="cursor: pointer"
+  >
+    Series
+  </h1>
   <!--
     <button
     mat-icon-button

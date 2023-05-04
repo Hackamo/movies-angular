@@ -10,8 +10,13 @@ export class MovieService {
   api_key = '399af3fea42fd17a119ef910e475a6c5';
   api_url = 'https://api.themoviedb.org/3';
   api_movie = '/movie/';
-  api_popularity =
+  api_serie = '/tv/';
+  api_popularity_movie =
     '/discover/movie?api_key=' +
+    this.api_key +
+    '&sort_by=popularity.desc&include_adult=false&include_video=false&page=';
+  api_popularity_serie =
+    '/discover/tv?api_key=' +
     this.api_key +
     '&sort_by=popularity.desc&include_adult=false&include_video=false&page=';
   api_search = '/search/movie?&api_key=' + this.api_key + '&query=';
@@ -35,7 +40,7 @@ export class MovieService {
 
   getMovies(pagination: number): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url + this.api_popularity + pagination
+      this.api_url + this.api_popularity_movie + pagination
     );
   }
 
@@ -45,15 +50,39 @@ export class MovieService {
     );
   }
 
-  getYoutubeVideo(movieId: string): Observable<any> {
+  getMovieYoutubeVideo(movieId: string): Observable<any> {
     return this.httpClient.get<any>(
       this.api_url  + this.api_movie + movieId + '/videos' + '?api_key='+ this.api_key+'&language='+this.languageFR
     );
   }
 
-  getCasting(movieId: string): Observable<any> {
+  getCastingMovie(movieId: string): Observable<any> {
     return this.httpClient.get<any>(
       this.api_url  + this.api_movie + movieId + '/credits' + '?api_key='+ this.api_key+'&language='+this.languageFR
+    );
+  }
+
+  getSeries(pagination: number): Observable<any> {
+    return this.httpClient.get<any>(
+      this.api_url + this.api_popularity_serie + pagination
+    );
+  }
+
+  getSeriesDetails(serieId: string): Observable<any> {
+    return this.httpClient.get<any>(
+      this.api_url  + this.api_serie + serieId + '?api_key='+ this.api_key+'&language='+this.languageFR
+    );
+  }
+
+  getSeriesYoutubeVideo(serieId: string): Observable<any> {
+    return this.httpClient.get<any>(
+      this.api_url  + this.api_serie + serieId + '/videos' + '?api_key='+ this.api_key
+    );
+  }
+
+  getCastingSeries(serieId: string): Observable<any> {
+    return this.httpClient.get<any>(
+      this.api_url  + this.api_serie + serieId + '/credits' + '?api_key='+ this.api_key
     );
   }
 }

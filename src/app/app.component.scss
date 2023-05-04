@@ -1,10 +1,12 @@
-.example-spacer {
-  display: flex;
-}
 
-.mat-toolbar {
+
+.toolbar {
   background-color: rgb(20, 20, 20);;
   color: aliceblue;
+}
+
+.title-toolbar {
+  margin-left: 1rem;
 }
 
 

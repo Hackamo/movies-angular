@@ -13,6 +13,7 @@ export class Movie {
   private _video: string;
   private _vote_average: string;
   private _vote_count: string;
+  private _name: string;
 
   constructor(
     adult: string,
@@ -28,7 +29,8 @@ export class Movie {
     title: string,
     video: string,
     vote_average: string,
-    vote_count: string
+    vote_count: string,
+    name: string
   ) {
     this._adult = adult;
     this._backdrop_path = backdrop_path;
@@ -44,6 +46,7 @@ export class Movie {
     this._video = video;
     this._vote_average = vote_average;
     this._vote_count = vote_count;
+    this._name = name;
   }
 
   public get adult(): string {
@@ -129,5 +132,11 @@ export class Movie {
   }
   public set vote_count(value: string) {
     this._vote_count = value;
+  }
+  public get name(): string {
+    return this._name;
+  }
+  public set name(value: string) {
+    this._name = value;
   }
 }

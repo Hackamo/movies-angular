@@ -24,4 +24,5 @@ export class detailsMovies {
   'vote_average': string = '';
   'vote_count': string = '';
   'genres': any;
+  'name': string= '';;
 }

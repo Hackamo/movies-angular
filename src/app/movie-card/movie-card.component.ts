@@ -8,6 +8,7 @@ import { Movie } from '../models/movie';
 })
 export class MovieCardComponent {
   @Input() movieInfos!: Movie;
+  routerType = '';
 
   isPhonePortrait!: boolean;
 
@@ -20,6 +21,7 @@ export class MovieCardComponent {
         this.isPhonePortrait = true;
       }
     });
+    this.routerType = this.movieInfos.title ? 'movie' : 'serie';
   }
 
   saveId() {
