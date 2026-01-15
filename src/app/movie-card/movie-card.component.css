@@ -1,0 +1,53 @@
+.card {
+  background-color: #555555;
+  color: #eee;
+  height: -moz-fit-content;
+  height: fit-content;
+  width: 22rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  margin: 1rem 1rem 1rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.movie-info {
+  display: flex;
+  justify-content: space-between;
+  letter-spacing: 0.5px;
+  align-items: center;
+  padding: 1rem;
+  min-height: 50px;
+}
+
+.title {
+  line-height: 1.2;
+}
+
+.note {
+  background-color: #1e1e1e;
+  border-radius: 3px;
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem !important;
+  font-weight: bold;
+  color: aliceblue;
+}
+
+.is-phone-portrait {
+  width: 8rem;
+  margin: 0.2rem 0.2rem 0.2rem;
+  justify-content: center;
+}
+
+.is-phone-portrait .movie-info {
+  padding: 8px;
+}
+
+.is-phone-portrait .title {
+  font-size: 12px;
+  width: 5rem;
+}
+
+.is-phone-portrait .note {
+  font-size: 10px;
+  border-radius: 20px;
+}/*# sourceMappingURL=movie-card.component.css.map */
