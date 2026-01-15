@@ -5,17 +5,11 @@
   </div>
 }
 @if (isLoaded) {
-  <div>
+  <div class="details-movie-container">
     <mat-card
       [ngClass]="{ 'is-phone-portrait': isPhonePortrait }"
       class="mat-card"
     >
-      <img
-        mat-card-image
-        src="https://image.tmdb.org/t/p/w1280//{{
-          this.detailsMovies.backdrop_path
-        }}"
-      />
       <mat-card-title class="title">{{ detailsMovies.title }}</mat-card-title>
       <mat-card-header>
         @for (genre of this.genres; track genre) {
@@ -25,8 +19,8 @@
         }
       </mat-card-header>
       <mat-card-header>Date de sortie: 2023-04-05</mat-card-header>
-      <mat-card-subtitle [style]="" class="note">
-        {{ detailsMovies.vote_average | number: "1.0-1" }}
+      <mat-card-subtitle class="note">
+        {{ detailsMovies.vote_average | number: "1.1-1" }}
       </mat-card-subtitle>
       <mat-card-content>
         <p>
@@ -50,7 +44,7 @@
         }
         <div class="cast">
           @for (cast of castingList; track cast) {
-            <mat-card class="actorCard">
+            <mat-card class="actorcard">
               <mat-card-subtitle>{{ cast.name }}</mat-card-subtitle>
               <mat-card-content
                 ><img

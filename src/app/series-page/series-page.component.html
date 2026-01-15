@@ -1,16 +1,13 @@
-<div class="main">
+<div
+  class="main"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+>
   @for (serie of series; track serie) {
     <div>
       <app-movie-card [movieInfos]="serie"></app-movie-card>
     </div>
   }
 </div>
-
-<button
-  mat-raised-button
-  class="buttonGetSeries"
-  color="accent"
-  (click)="getSeries()"
->
-  Get Series
-</button>

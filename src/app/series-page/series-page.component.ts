@@ -21,8 +21,8 @@ export class SeriesPageComponent {
   }
 
   onScroll() {
-    console.log('scrolled!!');
-    // this.getseries()
+    // console.log('scrolled!!');
+    this.getSeries();
   }
 
   getSeriesMock() {
