@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,34 +22,27 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SafePipe } from './services/pipe';
 import { SerieComponent } from './serie/serie.component';
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatGridListModule,
-    MatButtonModule,
-    InfiniteScrollModule,
-    MatDialogModule,
-    LayoutModule,
-    MatProgressSpinnerModule,
-  ],
-  declarations: [
-    AppComponent,
-    MovieComponent,
-    MoviesPageComponent,
-    SeriesPageComponent,
-    MovieCardComponent,
-    SafePipe,
-    SerieComponent,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        MovieComponent,
+        MoviesPageComponent,
+        SeriesPageComponent,
+        MovieCardComponent,
+        SafePipe,
+        SerieComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatGridListModule,
+        MatButtonModule,
+        InfiniteScrollModule,
+        MatDialogModule,
+        LayoutModule,
+        MatProgressSpinnerModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {}
 
 platformBrowserDynamic().bootstrapModule(AppModule);
