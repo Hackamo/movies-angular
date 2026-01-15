@@ -6,9 +6,10 @@ import { MovieService } from '../services/movies.service';
 import { detailsMovies } from './../models/detailsmovie';
 
 @Component({
-  selector: 'app-movie',
-  templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.scss'],
+    selector: 'app-movie',
+    templateUrl: './movie.component.html',
+    styleUrls: ['./movie.component.scss'],
+    standalone: false
 })
 export class MovieComponent {
   movieInfos!: Movie;

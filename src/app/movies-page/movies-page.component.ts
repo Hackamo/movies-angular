@@ -3,9 +3,10 @@ import { Movie } from '../models/movie';
 import { MovieService } from './../services/movies.service';
 
 @Component({
-  selector: 'app-movies-page',
-  templateUrl: './movies-page.component.html',
-  styleUrls: ['./movies-page.component.scss'],
+    selector: 'app-movies-page',
+    templateUrl: './movies-page.component.html',
+    styleUrls: ['./movies-page.component.scss'],
+    standalone: false
 })
 export class MoviesPageComponent {
   movies: Movie[] = [];
