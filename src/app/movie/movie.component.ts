@@ -6,10 +6,10 @@ import { MovieService } from '../services/movies.service';
 import { detailsMovies } from './../models/detailsmovie';
 
 @Component({
-    selector: 'app-movie',
-    templateUrl: './movie.component.html',
-    styleUrls: ['./movie.component.scss'],
-    standalone: false
+  selector: 'app-movie',
+  templateUrl: './movie.component.html',
+  styleUrls: ['./movie.component.scss'],
+  standalone: false,
 })
 export class MovieComponent {
   movieInfos!: Movie;
@@ -28,7 +28,7 @@ export class MovieComponent {
   constructor(
     private httpClient: MovieService,
     private responsive: BreakpointObserver,
-    private DomSanitizer: DomSanitizer
+    private DomSanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
@@ -49,19 +49,23 @@ export class MovieComponent {
       }
     });
 
-    this.httpClient.getMovieYoutubeVideo(this.movieId).subscribe((data: any) => {
-      this.videoKey = data.results[0].key;
-      this.isVideoLoaded = true;
-      console.log(this.videoKey);
-      this.videoSafeUrl = this.DomSanitizer.bypassSecurityTrustResourceUrl(
-        this.videoUrl + this.videoKey
-      );
-    });
+    this.httpClient
+      .getMovieYoutubeVideo(this.movieId)
+      .subscribe((data: any) => {
+        this.videoKey = data.results[0].key;
+        this.isVideoLoaded = true;
+        console.log(this.videoKey);
+        this.videoSafeUrl = this.DomSanitizer.bypassSecurityTrustResourceUrl(
+          this.videoUrl + this.videoKey,
+        );
+      });
 
     this.httpClient.getCastingMovie(this.movieId).subscribe((data: any) => {
       this.castingList = data.cast;
-      this.castingList = this.castingList.filter((cast) => cast.profile_path != null);
-      this.castingList = this.castingList.slice(0,14)
+      this.castingList = this.castingList.filter(
+        (cast) => cast.profile_path != null,
+      );
+      this.castingList = this.castingList.slice(0, 14);
     });
   }
 }

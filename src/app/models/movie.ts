@@ -30,7 +30,7 @@ export class Movie {
     video: string,
     vote_average: string,
     vote_count: string,
-    name: string
+    name: string,
   ) {
     this._adult = adult;
     this._backdrop_path = backdrop_path;

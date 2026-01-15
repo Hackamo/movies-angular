@@ -6,10 +6,10 @@ import { MovieService } from '../services/movies.service';
 import { detailsMovies } from './../models/detailsmovie';
 
 @Component({
-    selector: 'app-movie',
-    templateUrl: './serie.component.html',
-    styleUrls: ['./serie.component.scss'],
-    standalone: false
+  selector: 'app-movie',
+  templateUrl: './serie.component.html',
+  styleUrls: ['./serie.component.scss'],
+  standalone: false,
 })
 export class SerieComponent {
   movieInfos!: Movie;
@@ -28,7 +28,7 @@ export class SerieComponent {
   constructor(
     private httpClient: MovieService,
     private responsive: BreakpointObserver,
-    private DomSanitizer: DomSanitizer
+    private DomSanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class SerieComponent {
       if (result.matches) {
         this.isPhonePortrait = true;
       }
-      console.log(this.detailsMovies)
+      console.log(this.detailsMovies);
     });
 
     this.movieId = sessionStorage.getItem('movieId')!;
@@ -45,25 +45,28 @@ export class SerieComponent {
       this.isLoaded = true;
       this.detailsMovies = data;
       console.log(data);
-
     });
 
-    this.httpClient.getSeriesYoutubeVideo(this.movieId).subscribe((data: any) => {
-      console.log(data);
-      console.log("corentin");
+    this.httpClient
+      .getSeriesYoutubeVideo(this.movieId)
+      .subscribe((data: any) => {
+        console.log(data);
+        console.log('corentin');
 
-      this.videoKey = data.results[0].key;
-      this.isVideoLoaded = true;
-      console.log(this.videoKey);
-      this.videoSafeUrl = this.DomSanitizer.bypassSecurityTrustResourceUrl(
-        this.videoUrl + this.videoKey
-      );
-    });
+        this.videoKey = data.results[0].key;
+        this.isVideoLoaded = true;
+        console.log(this.videoKey);
+        this.videoSafeUrl = this.DomSanitizer.bypassSecurityTrustResourceUrl(
+          this.videoUrl + this.videoKey,
+        );
+      });
 
     this.httpClient.getCastingSeries(this.movieId).subscribe((data: any) => {
       this.castingList = data.cast;
-      this.castingList = this.castingList.filter((cast) => cast.profile_path != null);
-      this.castingList = this.castingList.slice(0,14)
+      this.castingList = this.castingList.filter(
+        (cast) => cast.profile_path != null,
+      );
+      this.castingList = this.castingList.slice(0, 14);
     });
   }
 }

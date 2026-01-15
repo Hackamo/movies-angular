@@ -1,4 +1,7 @@
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,27 +25,35 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SafePipe } from './services/pipe';
 import { SerieComponent } from './serie/serie.component';
 
-@NgModule({ declarations: [
-        AppComponent,
-        MovieComponent,
-        MoviesPageComponent,
-        SeriesPageComponent,
-        MovieCardComponent,
-        SafePipe,
-        SerieComponent,
-    ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatCardModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatGridListModule,
-        MatButtonModule,
-        InfiniteScrollModule,
-        MatDialogModule,
-        LayoutModule,
-        MatProgressSpinnerModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+@NgModule({
+  declarations: [
+    AppComponent,
+    MovieComponent,
+    MoviesPageComponent,
+    SeriesPageComponent,
+    MovieCardComponent,
+    SafePipe,
+    SerieComponent,
+  ],
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatGridListModule,
+    MatButtonModule,
+    InfiniteScrollModule,
+    MatDialogModule,
+    LayoutModule,
+    MatProgressSpinnerModule,
+  ],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
+})
 export class AppModule {}
 
-platformBrowserDynamic().bootstrapModule(AppModule, { applicationProviders: [provideZoneChangeDetection()], });
+platformBrowserDynamic().bootstrapModule(AppModule, {
+  applicationProviders: [provideZoneChangeDetection()],
+});

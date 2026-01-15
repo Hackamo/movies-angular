@@ -3,10 +3,10 @@ import { Movie } from '../models/movie';
 import { MovieService } from './../services/movies.service';
 
 @Component({
-    selector: 'app-movies-page',
-    templateUrl: './movies-page.component.html',
-    styleUrls: ['./movies-page.component.scss'],
-    standalone: false
+  selector: 'app-movies-page',
+  templateUrl: './movies-page.component.html',
+  styleUrls: ['./movies-page.component.scss'],
+  standalone: false,
 })
 export class MoviesPageComponent {
   movies: Movie[] = [];
@@ -21,17 +21,7 @@ export class MoviesPageComponent {
   }
 
   onScroll() {
-    console.log('scrolled!!');
-    // this.getMovies()
-  }
-
-  getMoviesMock() {
-    this.pagination += 1;
-    this.httpClient.getMovies(this.pagination).subscribe((data: Movie[]) => {
-      for (let i = 0; i < data.length; i++) {
-        this.movies.push(data[i]);
-      }
-    });
+    this.getMovies();
   }
 
   getMovies() {

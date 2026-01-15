@@ -34,55 +34,91 @@ export class MovieService {
     '&sort_by=revenue.desc&include_adult=false&include_video=false&page=';
   api_genre_fr = '/genre/movie/list?api_key=' + this.api_key + '';
   video_key = '';
-  languageFR ='fr'
+  languageFR = 'fr';
 
   ngOnInit() {}
 
   getMovies(pagination: number): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url + this.api_popularity_movie + pagination
+      this.api_url + this.api_popularity_movie + pagination,
     );
   }
 
   getMovieDetails(movieId: string): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url  + this.api_movie + movieId + '?api_key='+ this.api_key+'&language='+this.languageFR
+      this.api_url +
+        this.api_movie +
+        movieId +
+        '?api_key=' +
+        this.api_key +
+        '&language=' +
+        this.languageFR,
     );
   }
 
   getMovieYoutubeVideo(movieId: string): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url  + this.api_movie + movieId + '/videos' + '?api_key='+ this.api_key+'&language='+this.languageFR
+      this.api_url +
+        this.api_movie +
+        movieId +
+        '/videos' +
+        '?api_key=' +
+        this.api_key +
+        '&language=' +
+        this.languageFR,
     );
   }
 
   getCastingMovie(movieId: string): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url  + this.api_movie + movieId + '/credits' + '?api_key='+ this.api_key+'&language='+this.languageFR
+      this.api_url +
+        this.api_movie +
+        movieId +
+        '/credits' +
+        '?api_key=' +
+        this.api_key +
+        '&language=' +
+        this.languageFR,
     );
   }
 
   getSeries(pagination: number): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url + this.api_popularity_serie + pagination
+      this.api_url + this.api_popularity_serie + pagination,
     );
   }
 
   getSeriesDetails(serieId: string): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url  + this.api_serie + serieId + '?api_key='+ this.api_key+'&language='+this.languageFR
+      this.api_url +
+        this.api_serie +
+        serieId +
+        '?api_key=' +
+        this.api_key +
+        '&language=' +
+        this.languageFR,
     );
   }
 
   getSeriesYoutubeVideo(serieId: string): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url  + this.api_serie + serieId + '/videos' + '?api_key='+ this.api_key
+      this.api_url +
+        this.api_serie +
+        serieId +
+        '/videos' +
+        '?api_key=' +
+        this.api_key,
     );
   }
 
   getCastingSeries(serieId: string): Observable<any> {
     return this.httpClient.get<any>(
-      this.api_url  + this.api_serie + serieId + '/credits' + '?api_key='+ this.api_key
+      this.api_url +
+        this.api_serie +
+        serieId +
+        '/credits' +
+        '?api_key=' +
+        this.api_key,
     );
   }
 }

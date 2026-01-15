@@ -13,8 +13,8 @@ import {
  * Sanitize HTML
  */
 @Pipe({
-    name: 'safe',
-    standalone: false
+  name: 'safe',
+  standalone: false,
 })
 export class SafePipe implements PipeTransform {
   /**
@@ -33,7 +33,7 @@ export class SafePipe implements PipeTransform {
    */
   transform(
     value: string,
-    type: string
+    type: string,
   ): SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl {
     switch (type) {
       case 'html':
