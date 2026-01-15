@@ -1,7 +1,9 @@
 <div class="main">
-  <div *ngFor="let serie of series">
-    <app-movie-card [movieInfos]="serie"></app-movie-card>
-  </div>
+  @for (serie of series; track serie) {
+    <div>
+      <app-movie-card [movieInfos]="serie"></app-movie-card>
+    </div>
+  }
 </div>
 
 
