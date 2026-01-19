@@ -20,12 +20,11 @@
   background-color: #1e1e1e;
   width: -moz-fit-content;
   width: fit-content;
-  border-radius: 6px;
+  border-radius: 20px;
   padding: 0.3rem 0.5rem 0.3rem 0.5rem !important;
   font-weight: bold;
   color: aliceblue;
   font-size: 12px;
-  border-radius: 20px;
   margin-left: 1rem;
 }
 
@@ -36,30 +35,52 @@
 }
 
 .cast {
-  display: flex;
+  display: grid;
   width: 100%;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
 }
 
 .actorCard {
   display: flex;
   align-items: center;
-  margin: 0.5rem;
 }
 
 .actor {
   width: 8rem;
+  height: 12rem;
+  object-fit: cover;
+  background-color: #333;
 }
 
-.is-phone-portrait .genre {
-  font-size: 11px;
+.actor-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
-.is-phone-portrait .title {
-  font-size: 20px;
+.actor-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 12rem;
+  background-color: #333;
 }
 
-.is-phone-portrait .iframe {
-  height: 150px;
-} /*# sourceMappingURL=movie.component.css.map */
+.hidden {
+  display: none;
+}
+
+.is-phone-portrait {
+  .genre {
+    font-size: 11px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .iframe {
+    height: 150px;
+  }
+}

@@ -4,48 +4,31 @@ import {
 } from '@angular/common/http';
 import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, platformBrowser } from '@angular/platform-browser';
 
+import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MovieComponent } from './movie/movie.component';
-import { MoviesPageComponent } from './movies-page/movies-page.component';
-import { SeriesPageComponent } from './series-page/series-page.component';
-import { MovieCardComponent } from './movie-card/movie-card.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MediaComponent } from './media-details/media.component';
 import { SafePipe } from './services/pipe';
-import { SerieComponent } from './serie/serie.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MovieComponent,
-    MoviesPageComponent,
-    SeriesPageComponent,
-    MovieCardComponent,
-    SafePipe,
-    SerieComponent,
-  ],
+  declarations: [AppComponent, MediaComponent, SafePipe],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
     MatCardModule,
     MatToolbarModule,
     MatIconModule,
     MatGridListModule,
     MatButtonModule,
-    InfiniteScrollModule,
     MatDialogModule,
     LayoutModule,
     MatProgressSpinnerModule,
@@ -54,6 +37,6 @@ import { SerieComponent } from './serie/serie.component';
 })
 export class AppModule {}
 
-platformBrowserDynamic().bootstrapModule(AppModule, {
+platformBrowser().bootstrapModule(AppModule, {
   applicationProviders: [provideZoneChangeDetection()],
 });

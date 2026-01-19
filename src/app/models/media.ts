@@ -1,4 +1,4 @@
-export class Movie {
+export class Media {
   private _adult: string;
   private _backdrop_path: string;
   private _genre_ids: string;

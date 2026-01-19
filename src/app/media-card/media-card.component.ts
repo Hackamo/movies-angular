@@ -1,14 +1,19 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, Input } from '@angular/core';
-import { Movie } from '../models/movie';
+import { Media } from '../models/media';
+import { DecimalPipe, NgClass } from '@angular/common';
+import { MatCard, MatCardModule } from '@angular/material/card';
+import { RouterLink } from '@angular/router';
 @Component({
-  selector: 'app-movie-card',
-  templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss'],
-  standalone: false,
+  selector: 'app-media-card',
+  templateUrl: './media-card.component.html',
+  styleUrls: ['./media-card.component.scss'],
+  imports: [DecimalPipe, MatCardModule, NgClass, MatCard, RouterLink],
+  providers: [DecimalPipe],
+  standalone: true,
 })
-export class MovieCardComponent {
-  @Input() movieInfos!: Movie;
+export class MediaCardComponent {
+  @Input() mediaInfos!: Media;
   routerType = '';
 
   isPhonePortrait!: boolean;
@@ -22,22 +27,17 @@ export class MovieCardComponent {
         this.isPhonePortrait = true;
       }
     });
-    this.routerType = this.movieInfos.title ? 'movie' : 'serie';
+    this.routerType = this.mediaInfos.title ? 'movie' : 'serie';
   }
-
-  saveId() {
-    sessionStorage.setItem('movieId', this.movieInfos.id);
-  }
-
   getNoteColor() {
-    if (this.movieInfos.vote_average) {
-      if (Number(this.movieInfos.vote_average) > 7) {
+    if (this.mediaInfos.vote_average) {
+      if (Number(this.mediaInfos.vote_average) > 7) {
         return {
           color: 'rgb(135, 220, 50)',
         };
       }
-      if (this.movieInfos.vote_average) {
-        if (Number(this.movieInfos.vote_average) > 5) {
+      if (this.mediaInfos.vote_average) {
+        if (Number(this.mediaInfos.vote_average) > 5) {
           return {
             color: 'orange',
           };

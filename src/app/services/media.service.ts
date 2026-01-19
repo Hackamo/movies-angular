@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({ providedIn: 'root' })
-export class MovieService {
+export class MediaService {
   constructor(private httpClient: HttpClient) {}
 
   api_key = '399af3fea42fd17a119ef910e475a6c5';
@@ -38,87 +38,62 @@ export class MovieService {
 
   ngOnInit() {}
 
-  getMovies(pagination: number): Observable<any> {
+  getDetails(type: 'movie' | 'serie', id: string): Observable<any> {
+    const endpoint = type === 'movie' ? this.api_movie : this.api_serie;
     return this.httpClient.get<any>(
-      this.api_url + this.api_popularity_movie + pagination,
+      `${this.api_url}${endpoint}${id}?api_key=${this.api_key}&language=${this.languageFR}`,
     );
+  }
+
+  getVideo(type: 'movie' | 'serie', id: string): Observable<any> {
+    const endpoint = type === 'movie' ? this.api_movie : this.api_serie;
+    return this.httpClient.get<any>(
+      `${this.api_url}${endpoint}${id}/videos?api_key=${this.api_key}&language=${this.languageFR}`,
+    );
+  }
+
+  getCast(type: 'movie' | 'serie', id: string): Observable<any> {
+    const endpoint = type === 'movie' ? this.api_movie : this.api_serie;
+    return this.httpClient.get<any>(
+      `${this.api_url}${endpoint}${id}/credits?api_key=${this.api_key}&language=${this.languageFR}`,
+    );
+  }
+
+  getPopular(type: 'movie' | 'serie', pagination: number): Observable<any> {
+    const endpoint =
+      type === 'movie' ? this.api_popularity_movie : this.api_popularity_serie;
+    return this.httpClient.get<any>(this.api_url + endpoint + pagination);
+  }
+
+  getMovies(pagination: number): Observable<any> {
+    return this.getPopular('movie', pagination);
   }
 
   getMovieDetails(movieId: string): Observable<any> {
-    return this.httpClient.get<any>(
-      this.api_url +
-        this.api_movie +
-        movieId +
-        '?api_key=' +
-        this.api_key +
-        '&language=' +
-        this.languageFR,
-    );
+    return this.getDetails('movie', movieId);
   }
 
   getMovieYoutubeVideo(movieId: string): Observable<any> {
-    return this.httpClient.get<any>(
-      this.api_url +
-        this.api_movie +
-        movieId +
-        '/videos' +
-        '?api_key=' +
-        this.api_key +
-        '&language=' +
-        this.languageFR,
-    );
+    return this.getVideo('movie', movieId);
   }
 
   getCastingMovie(movieId: string): Observable<any> {
-    return this.httpClient.get<any>(
-      this.api_url +
-        this.api_movie +
-        movieId +
-        '/credits' +
-        '?api_key=' +
-        this.api_key +
-        '&language=' +
-        this.languageFR,
-    );
+    return this.getCast('movie', movieId);
   }
 
   getSeries(pagination: number): Observable<any> {
-    return this.httpClient.get<any>(
-      this.api_url + this.api_popularity_serie + pagination,
-    );
+    return this.getPopular('serie', pagination);
   }
 
   getSeriesDetails(serieId: string): Observable<any> {
-    return this.httpClient.get<any>(
-      this.api_url +
-        this.api_serie +
-        serieId +
-        '?api_key=' +
-        this.api_key +
-        '&language=' +
-        this.languageFR,
-    );
+    return this.getDetails('serie', serieId);
   }
 
   getSeriesYoutubeVideo(serieId: string): Observable<any> {
-    return this.httpClient.get<any>(
-      this.api_url +
-        this.api_serie +
-        serieId +
-        '/videos' +
-        '?api_key=' +
-        this.api_key,
-    );
+    return this.getVideo('serie', serieId);
   }
 
   getCastingSeries(serieId: string): Observable<any> {
-    return this.httpClient.get<any>(
-      this.api_url +
-        this.api_serie +
-        serieId +
-        '/credits' +
-        '?api_key=' +
-        this.api_key,
-    );
+    return this.getCast('serie', serieId);
   }
 }

@@ -1,0 +1,7 @@
+<div class="main" infiniteScroll (scrolled)="onScroll()">
+  @for (media of medias; track media) {
+    <div>
+      <app-media-card [mediaInfos]="media"></app-media-card>
+    </div>
+  }
+</div>

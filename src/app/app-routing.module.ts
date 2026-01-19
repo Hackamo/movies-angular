@@ -1,16 +1,15 @@
-import { MoviesPageComponent } from './movies-page/movies-page.component';
+import { MediaPageComponent } from './media-page/media-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { MovieComponent } from './movie/movie.component';
-import { SeriesPageComponent } from './series-page/series-page.component';
-import { SerieComponent } from './serie/serie.component';
+import { MediaComponent } from './media-details/media.component';
 
 const routes: Routes = [
-  { path: '', component: MoviesPageComponent },
-  { path: 'movie', component: MovieComponent },
-  { path: 'series', component: SeriesPageComponent },
-  { path: 'series/serie', component: SerieComponent },
+  { path: '', redirectTo: 'movies', pathMatch: 'full' },
+  { path: 'movies', component: MediaPageComponent, data: { type: 'movie' } },
+  { path: 'series', component: MediaPageComponent, data: { type: 'serie' } },
+  { path: 'movie/:id', component: MediaComponent },
+  { path: 'serie/:id', component: MediaComponent },
 ];
 
 @NgModule({

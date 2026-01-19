@@ -1,0 +1,19 @@
+<mat-card
+  [routerLink]="['/', routerType, mediaInfos.id]"
+  class="card"
+  [ngClass]="{ 'is-phone-portrait': isPhonePortrait }"
+>
+  <img
+    mat-card-image
+    src="https://image.tmdb.org/t/p/w1280//{{ mediaInfos.poster_path }}"
+    alt="Photo of {{ mediaInfos.title || mediaInfos.name }}"
+  />
+  <div class="movie-info">
+    <mat-card-title class="title">{{
+      mediaInfos.title ? mediaInfos.title : mediaInfos.name
+    }}</mat-card-title>
+    <mat-card-subtitle [style]="getNoteColor()" class="note">
+      {{ mediaInfos.vote_average | number: "1.0-1" }}
+    </mat-card-subtitle>
+  </div>
+</mat-card>
