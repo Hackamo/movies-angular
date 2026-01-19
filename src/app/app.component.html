@@ -21,6 +21,20 @@
   >
     Séries
   </h1>
+
+  <button
+    mat-button
+    [matMenuTriggerFor]="menu"
+    class="title-toolbar"
+    style="font-size: 1em; font-weight: normal"
+  >
+    Nouveautés
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="release">Films</button>
+    <button mat-menu-item routerLink="release-series">Séries</button>
+  </mat-menu>
   <span style="flex: 1 1 auto"></span>
   <div class="search-bar">
     <input

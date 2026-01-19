@@ -18,6 +18,7 @@ export class MediaPageComponent implements OnInit {
   pagination = 0;
   mediaType: 'movie' | 'serie' = 'movie';
   searchQuery: string | null = null;
+  filter: string = 'popular';
 
   constructor(
     private mediaService: MediaService,
@@ -28,6 +29,7 @@ export class MediaPageComponent implements OnInit {
     combineLatest([this.route.data, this.route.queryParams]).subscribe(
       ([data, params]) => {
         this.mediaType = data['type'] || 'movie';
+        this.filter = data['filter'] || 'popular';
         this.searchQuery = params['q'];
         this.medias = [];
         this.pagination = 0;
@@ -46,13 +48,25 @@ export class MediaPageComponent implements OnInit {
       this.mediaService
         .searchMovies(this.searchQuery, this.pagination)
         .subscribe((data) => {
-          this.medias.push(...data.results);
+          this.medias.push(
+            ...data.results.filter((media: any) => media.poster_path),
+          );
+        });
+    } else if (this.filter === 'release') {
+      this.mediaService
+        .getReleaseMedia(this.mediaType, this.pagination)
+        .subscribe((data) => {
+          this.medias.push(
+            ...data.results.filter((media: any) => media.poster_path),
+          );
         });
     } else {
       this.mediaService
         .getPopular(this.mediaType, this.pagination)
         .subscribe((data) => {
-          this.medias.push(...data.results);
+          this.medias.push(
+            ...data.results.filter((media: any) => media.poster_path),
+          );
         });
     }
   }
