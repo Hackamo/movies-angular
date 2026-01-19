@@ -28,6 +28,15 @@ export class AppComponent {
     window.location.reload();
   }
 
+  toggleProviders() {
+    this.mediaService.filterByProviders = !this.mediaService.filterByProviders;
+    localStorage.setItem(
+      'filterByProviders',
+      String(this.mediaService.filterByProviders),
+    );
+    window.location.reload();
+  }
+
   search(query: string) {
     if (query.trim()) {
       this.router.navigate(['/movies'], { queryParams: { q: query } });

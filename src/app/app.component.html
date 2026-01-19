@@ -47,6 +47,11 @@
       <mat-icon>search</mat-icon>
     </button>
   </div>
+  <button mat-icon-button (click)="toggleProviders()">
+    <mat-icon>{{
+      mediaService.filterByProviders ? "filter_alt" : "filter_alt_off"
+    }}</mat-icon>
+  </button>
   <button mat-button (click)="switchLanguage()">
     {{ mediaService.language === "fr" ? "FR" : "EN" }}
   </button>
