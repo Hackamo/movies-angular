@@ -1,10 +1,11 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { MediaService } from '../services/media.service';
 
 @Component({
@@ -14,7 +15,7 @@ import { MediaService } from '../services/media.service';
   imports: [CommonModule, MatCardModule, MatProgressSpinnerModule],
   standalone: true,
 })
-export class MediaComponent {
+export class MediaComponent implements OnInit, OnDestroy {
   imageLoadingStates: boolean[] = [];
 
   mediaId!: string;
@@ -28,6 +29,7 @@ export class MediaComponent {
   videoSafeUrl!: SafeResourceUrl;
   videoUrl = 'https://www.youtube.com/embed/';
   castingList!: any[];
+  private subs = new Subscription();
 
   constructor(
     private mediaService: MediaService,
@@ -37,50 +39,54 @@ export class MediaComponent {
   ) {}
 
   ngOnInit() {
-    this.responsive.observe(Breakpoints.HandsetPortrait).subscribe((result) => {
-      this.isPhonePortrait = false;
-      if (result.matches) {
-        this.isPhonePortrait = true;
-      }
-    });
+    this.subs.add(
+      this.responsive
+        .observe(Breakpoints.HandsetPortrait)
+        .subscribe((result) => {
+          this.isPhonePortrait = result.matches;
+        }),
+    );
 
     this.mediaId = this.route.snapshot.paramMap.get('id') || '';
-    if (this.route.snapshot.url[0].path === 'serie') {
-      this.mediaType = 'serie';
-    } else {
-      this.mediaType = 'movie';
-    }
+    this.mediaType =
+      this.route.snapshot.url[0].path === 'serie' ? 'serie' : 'movie';
 
-    console.log('Media ID:', this.mediaId);
+    this.subs.add(
+      this.mediaService
+        .getDetails(this.mediaType, this.mediaId)
+        .subscribe((data: any) => {
+          this.isLoaded = true;
+          this.mediaDetails = data;
+          this.genres = this.mediaDetails.genres.map(
+            (genre: any) => genre.name,
+          );
+        }),
+    );
 
-    this.mediaService
-      .getDetails(this.mediaType, this.mediaId)
-      .subscribe((data: any) => {
-        this.isLoaded = true;
-        this.mediaDetails = data;
-        console.log(data);
-        this.genres = this.mediaDetails.genres.map((genre: any) => genre.name);
-      });
+    this.subs.add(
+      this.mediaService
+        .getVideo(this.mediaType, this.mediaId)
+        .subscribe((data: any) => {
+          this.videoKey = data.results[0].key;
+          this.isVideoLoaded = true;
+          this.videoSafeUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
+            this.videoUrl + this.videoKey,
+          );
+        }),
+    );
 
-    this.mediaService
-      .getVideo(this.mediaType, this.mediaId)
-      .subscribe((data: any) => {
-        this.videoKey = data.results[0].key;
-        this.isVideoLoaded = true;
-        console.log(this.videoKey);
-        this.videoSafeUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
-          this.videoUrl + this.videoKey,
-        );
-      });
+    this.subs.add(
+      this.mediaService
+        .getCast(this.mediaType, this.mediaId)
+        .subscribe((data: any) => {
+          this.castingList = data.cast
+            .filter((cast: any) => cast.profile_path != null)
+            .slice(0, 24);
+        }),
+    );
+  }
 
-    this.mediaService
-      .getCast(this.mediaType, this.mediaId)
-      .subscribe((data: any) => {
-        this.castingList = data.cast;
-        this.castingList = this.castingList.filter(
-          (cast) => cast.profile_path != null,
-        );
-        this.castingList = this.castingList.slice(0, 14);
-      });
+  ngOnDestroy() {
+    this.subs.unsubscribe();
   }
 }

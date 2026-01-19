@@ -22,6 +22,17 @@
     Séries
   </h1>
   <span style="flex: 1 1 auto"></span>
+  <div class="search-bar">
+    <input
+      #searchInput
+      type="text"
+      placeholder="Search..."
+      (keyup.enter)="search(searchInput.value)"
+    />
+    <button mat-icon-button (click)="search(searchInput.value)">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
   <button mat-button (click)="switchLanguage()">
     {{ mediaService.language === "fr" ? "FR" : "EN" }}
   </button>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { MediaService } from './services/media.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +14,7 @@ export class AppComponent {
   constructor(
     private location: Location,
     public mediaService: MediaService,
+    private router: Router,
   ) {}
 
   goBack() {
@@ -24,5 +26,11 @@ export class AppComponent {
     this.mediaService.language = newLang;
     localStorage.setItem('language', newLang);
     window.location.reload();
+  }
+
+  search(query: string) {
+    if (query.trim()) {
+      this.router.navigate(['/movies'], { queryParams: { q: query } });
+    }
   }
 }

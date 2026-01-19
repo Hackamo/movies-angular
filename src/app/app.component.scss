@@ -8,3 +8,25 @@
 .title-toolbar {
   padding: 1rem;
 }
+
+.search-bar {
+  background: rgba(255, 124, 124, 0.445);
+  border-radius: 4px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+
+  input {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    padding: 8px;
+    font-family: inherit;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}

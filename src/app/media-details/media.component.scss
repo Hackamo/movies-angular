@@ -161,6 +161,18 @@ mat-card-content {
   display: none;
 }
 
+@media (max-width: 900px) {
+  .cast {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 2fr));
+    gap: 1rem;
+  }
+
+  .actor,
+  .actor-spinner {
+    height: 180px;
+  }
+}
+
 // Responsive adjustments
 .is-phone-portrait {
   .title {

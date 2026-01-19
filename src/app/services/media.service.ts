@@ -65,6 +65,18 @@ export class MediaService {
     );
   }
 
+  searchMovies(query: string, pagination: number): Observable<any> {
+    return this.httpClient.get<any>(
+      this.api_url +
+        this.api_search +
+        query +
+        '&language=' +
+        this.language +
+        '&page=' +
+        pagination,
+    );
+  }
+
   getMovies(pagination: number): Observable<any> {
     return this.getPopular('movie', pagination);
   }

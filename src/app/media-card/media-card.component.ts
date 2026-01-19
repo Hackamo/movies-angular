@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { DecimalPipe, NgClass } from '@angular/common';
+import { DecimalPipe, NgClass, NgStyle } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { RouterLink } from '@angular/router';
@@ -8,7 +8,7 @@ import { Media } from '../models/media';
   selector: 'app-media-card',
   templateUrl: './media-card.component.html',
   styleUrls: ['./media-card.component.scss'],
-  imports: [DecimalPipe, MatCardModule, NgClass, MatCard, RouterLink],
+  imports: [DecimalPipe, MatCardModule, NgClass, NgStyle, MatCard, RouterLink],
   providers: [DecimalPipe],
   standalone: true,
 })
