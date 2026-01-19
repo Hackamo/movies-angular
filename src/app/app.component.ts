@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { MediaService } from './services/media.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,14 +10,19 @@ import { Location } from '@angular/common';
 export class AppComponent {
   title = 'movies-angular';
 
-  private location: Location;
-
-  constructor(location: Location) {
-    this.location = location;
-  }
+  constructor(
+    private location: Location,
+    public mediaService: MediaService,
+  ) {}
 
   goBack() {
     this.location.back();
   }
-  onMovieClick() {}
+
+  switchLanguage() {
+    const newLang = this.mediaService.language === 'fr' ? 'en' : 'fr';
+    this.mediaService.language = newLang;
+    localStorage.setItem('language', newLang);
+    window.location.reload();
+  }
 }

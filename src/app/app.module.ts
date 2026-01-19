@@ -2,9 +2,9 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
-import { NgModule, provideZoneChangeDetection } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { BrowserModule, platformBrowser } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatButtonModule } from '@angular/material/button';
@@ -15,7 +15,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MediaComponent } from './media-details/media.component';
 import { SafePipe } from './services/pipe';
 
 @NgModule({
@@ -36,7 +35,3 @@ import { SafePipe } from './services/pipe';
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class AppModule {}
-
-platformBrowser().bootstrapModule(AppModule, {
-  applicationProviders: [provideZoneChangeDetection()],
-});

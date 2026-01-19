@@ -32,7 +32,7 @@ export class MediaComponent {
   constructor(
     private mediaService: MediaService,
     private responsive: BreakpointObserver,
-    private DomSanitizer: DomSanitizer,
+    private domSanitizer: DomSanitizer,
     private route: ActivatedRoute,
   ) {}
 
@@ -59,9 +59,7 @@ export class MediaComponent {
         this.isLoaded = true;
         this.mediaDetails = data;
         console.log(data);
-        for (const genre of this.mediaDetails.genres) {
-          this.genres.push(genre.name);
-        }
+        this.genres = this.mediaDetails.genres.map((genre: any) => genre.name);
       });
 
     this.mediaService
@@ -70,7 +68,7 @@ export class MediaComponent {
         this.videoKey = data.results[0].key;
         this.isVideoLoaded = true;
         console.log(this.videoKey);
-        this.videoSafeUrl = this.DomSanitizer.bypassSecurityTrustResourceUrl(
+        this.videoSafeUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(
           this.videoUrl + this.videoKey,
         );
       });

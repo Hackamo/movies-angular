@@ -21,6 +21,10 @@
   >
     Séries
   </h1>
+  <span style="flex: 1 1 auto"></span>
+  <button mat-button (click)="switchLanguage()">
+    {{ mediaService.language === "fr" ? "FR" : "EN" }}
+  </button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

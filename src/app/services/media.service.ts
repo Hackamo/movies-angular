@@ -34,35 +34,35 @@ export class MediaService {
     '&sort_by=revenue.desc&include_adult=false&include_video=false&page=';
   api_genre_fr = '/genre/movie/list?api_key=' + this.api_key + '';
   video_key = '';
-  languageFR = 'fr';
-
-  ngOnInit() {}
+  language = localStorage.getItem('language') || 'fr';
 
   getDetails(type: 'movie' | 'serie', id: string): Observable<any> {
     const endpoint = type === 'movie' ? this.api_movie : this.api_serie;
     return this.httpClient.get<any>(
-      `${this.api_url}${endpoint}${id}?api_key=${this.api_key}&language=${this.languageFR}`,
+      `${this.api_url}${endpoint}${id}?api_key=${this.api_key}&language=${this.language}`,
     );
   }
 
   getVideo(type: 'movie' | 'serie', id: string): Observable<any> {
     const endpoint = type === 'movie' ? this.api_movie : this.api_serie;
     return this.httpClient.get<any>(
-      `${this.api_url}${endpoint}${id}/videos?api_key=${this.api_key}&language=${this.languageFR}`,
+      `${this.api_url}${endpoint}${id}/videos?api_key=${this.api_key}&language=${this.language}`,
     );
   }
 
   getCast(type: 'movie' | 'serie', id: string): Observable<any> {
     const endpoint = type === 'movie' ? this.api_movie : this.api_serie;
     return this.httpClient.get<any>(
-      `${this.api_url}${endpoint}${id}/credits?api_key=${this.api_key}&language=${this.languageFR}`,
+      `${this.api_url}${endpoint}${id}/credits?api_key=${this.api_key}&language=${this.language}`,
     );
   }
 
   getPopular(type: 'movie' | 'serie', pagination: number): Observable<any> {
     const endpoint =
       type === 'movie' ? this.api_popularity_movie : this.api_popularity_serie;
-    return this.httpClient.get<any>(this.api_url + endpoint + pagination);
+    return this.httpClient.get<any>(
+      this.api_url + endpoint + pagination + '&language=' + this.language,
+    );
   }
 
   getMovies(pagination: number): Observable<any> {
