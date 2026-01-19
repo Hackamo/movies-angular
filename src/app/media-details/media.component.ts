@@ -1,14 +1,18 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { MediaService } from '../services/media.service';
 import { ActivatedRoute } from '@angular/router';
+import { MediaService } from '../services/media.service';
 
 @Component({
   selector: 'app-media',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.scss'],
-  standalone: false,
+  imports: [CommonModule, MatCardModule, MatProgressSpinnerModule],
+  standalone: true,
 })
 export class MediaComponent {
   imageLoadingStates: boolean[] = [];

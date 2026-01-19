@@ -1,4 +1,7 @@
 <mat-toolbar class="toolbar">
+  <button mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
   <h1
     class="title-toolbar"
     routerLink="movies"
@@ -6,7 +9,7 @@
     ariaCurrentWhenActive="page"
     style="cursor: pointer"
   >
-    Movies
+    Films
   </h1>
 
   <h1
@@ -16,7 +19,7 @@
     ariaCurrentWhenActive="page"
     style="cursor: pointer"
   >
-    Series
+    Séries
   </h1>
 </mat-toolbar>
 

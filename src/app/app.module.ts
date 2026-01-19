@@ -19,7 +19,7 @@ import { MediaComponent } from './media-details/media.component';
 import { SafePipe } from './services/pipe';
 
 @NgModule({
-  declarations: [AppComponent, MediaComponent, SafePipe],
+  declarations: [AppComponent, SafePipe],
   bootstrap: [AppComponent],
   imports: [
     BrowserModule,

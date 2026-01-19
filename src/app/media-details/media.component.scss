@@ -1,86 +1,189 @@
+.details-movie-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
 .mat-card {
-  background-color: rgb(20, 20, 20);
-  color: white;
+  background-color: #ffffff;
+  color: #333333;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+// Backdrop image styling
+.mat-card > img.mat-card-image {
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  object-fit: cover;
+  object-position: center top;
+  margin: 0;
 }
 
 .spinner {
-  justify-self: center;
-}
-
-.genre {
-  background-color: #708ed2;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 10px;
-  padding: 0 0.5rem;
-  margin-right: 4px;
-}
-
-.note {
-  background-color: #1e1e1e;
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 20px;
-  padding: 0.3rem 0.5rem 0.3rem 0.5rem !important;
-  font-weight: bold;
-  color: aliceblue;
-  font-size: 12px;
-  margin-left: 1rem;
+  margin: 3rem auto;
+  display: block;
 }
 
 .title {
-  color: #708ed2;
-  font-size: 2rem;
-  padding: 1rem 0 0 1rem;
+  color: #1a1a1a;
+  font-size: 2.5rem;
+  font-weight: 800;
+  padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+  margin: 0;
+  line-height: 1.2;
+}
+
+// Container for genres and date
+mat-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0 1.5rem;
+  margin-bottom: 1rem;
+  gap: 10px;
+
+  // Reset default material margins
+  ::ng-deep .mat-card-header-text {
+    margin: 0;
+  }
+}
+
+.genre {
+  background-color: #f0f2f5;
+  color: #555;
+  border: 1px solid #e1e4e8;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.note {
+  background-color: #333;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 12px !important;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0 1.5rem;
+  display: inline-block;
+  width: auto;
+}
+
+mat-card-content {
+  padding: 0 1.5rem;
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4a4a4a;
+    margin-bottom: 2rem;
+    max-width: 800px;
+  }
+}
+
+.iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
 }
 
 .cast {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-.actorCard {
-  display: flex;
-  align-items: center;
+.actorcard {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: none;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  mat-card-subtitle {
+    padding: 12px 8px;
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  mat-card-content {
+    padding: 0;
+  }
 }
 
 .actor {
-  width: 8rem;
-  height: 12rem;
+  width: 100%;
+  height: 240px;
   object-fit: cover;
-  background-color: #333;
-}
-
-.actor-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  min-width: 0;
+  display: block;
+  background-color: #f0f0f0;
 }
 
 .actor-spinner {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 8rem;
-  height: 12rem;
-  background-color: #333;
+  width: 100%;
+  height: 240px;
+  background-color: #f0f0f0;
 }
 
 .hidden {
   display: none;
 }
 
+// Responsive adjustments
 .is-phone-portrait {
-  .genre {
-    font-size: 11px;
-  }
   .title {
-    font-size: 20px;
+    font-size: 1.75rem;
+    padding: 1rem;
   }
-  .iframe {
-    height: 150px;
+
+  mat-card-header {
+    padding: 0 1rem;
+  }
+
+  mat-card-content {
+    padding: 0 1rem;
+  }
+
+  .note {
+    margin-left: 1rem;
+  }
+
+  .cast {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .actor,
+  .actor-spinner {
+    height: 200px;
   }
 }

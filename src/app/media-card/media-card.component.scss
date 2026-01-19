@@ -1,6 +1,6 @@
 .card {
-  background-color: #555555;
-  color: #eee;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
   height: fit-content;
   width: 22rem;
   border-radius: 0.5rem;
@@ -24,11 +24,11 @@
 }
 
 .note {
-  background-color: #1e1e1e;
+  background: var(--accent-gradient);
   border-radius: 3px;
   padding: 0.3rem 0.5rem 0.3rem 0.5rem !important;
   font-weight: bold;
-  color: aliceblue;
+  color: #fff;
 }
 
 .is-phone-portrait {
