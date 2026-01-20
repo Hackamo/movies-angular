@@ -19,7 +19,7 @@
 				>Date de sortie: {{ mediaDetails.release_date || mediaDetails.first_air_date | date }}
 				<div class="note-container">
 					<mat-card-subtitle class="note"> {{ mediaDetails.vote_average | number: '1.1-1' }} </mat-card-subtitle>
-					<span>based on {{ mediaDetails.vote_count }} votes</span>
+					<span>{{ mediaDetails.vote_count }} votes</span>
 				</div></mat-card-header
 			>
 
@@ -35,9 +35,6 @@
 				}
 				@if (spokenLanguages.length) {
 					<span><strong>Langues:</strong> {{ spokenLanguages.join(', ') }}</span>
-				}
-				@if (mediaDetails.runtime) {
-					<span><strong>Durée:</strong> {{ mediaDetails.runtime }} min</span>
 				}
 
 				@if (mediaDetails.budget) {
@@ -66,8 +63,15 @@
 						allowfullscreen
 					></iframe>
 				}
+				@if (mediaDetails.runtime) {
+					<span><strong>Durée:</strong> {{ mediaDetails.runtime }} min</span>
+				}
 				<div class="cast">
-					@for (cast of castingList.slice(0, showAllCast ? castingList.length : (isTablet ? 10 : 6)); track cast; let i = $index) {
+					@for (
+						cast of castingList.slice(0, showAllCast ? castingList.length : isTablet ? 10 : 6);
+						track cast;
+						let i = $index
+					) {
 						<mat-card class="actorcard" [routerLink]="['/person', cast.id]">
 							<mat-card-subtitle>{{ cast.name }}</mat-card-subtitle>
 							<mat-card-content>
@@ -88,7 +92,9 @@
 				</div>
 				@if (castingList.length > (isTablet ? 10 : 6)) {
 					<div class="view-more-container">
-						<button mat-stroked-button color="primary" (click)="toggleCast()">{{ showAllCast ? 'Voir moins' : 'Voir plus' }}</button>
+						<button mat-stroked-button color="primary" (click)="toggleCast()">
+							{{ showAllCast ? 'Voir moins' : 'Voir plus' }}
+						</button>
 					</div>
 				}
 			</mat-card-content>

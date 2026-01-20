@@ -16,7 +16,7 @@
 	display: flex;
 	align-items: center;
 	margin-right: 16px;
-
+	justify-content: space-between;
 	input {
 		background: transparent;
 		border: none;
@@ -65,5 +65,24 @@
 
 	&::-webkit-scrollbar-thumb:hover {
 		background-color: rgba(0, 0, 0, 0.5);
+	}
+}
+
+@media (max-width: 600px) {
+	.hide-on-mobile {
+		display: none;
+	}
+}
+
+.search-bar-mobile {
+	background: var(--primary-gradient);
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+}
+
+@media (min-width: 601px) {
+	.hide-on-desktop {
+		display: none;
 	}
 }
