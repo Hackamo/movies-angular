@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { AppComponent } from './app.component'
 import { SafePipe } from './services/pipe'
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
 
 @NgModule({
 	declarations: [AppComponent, SafePipe],
@@ -32,6 +33,7 @@ import { SafePipe } from './services/pipe'
 		MatMenuModule,
 		MatProgressSpinnerModule,
 		MatTooltipModule,
+		MatAutocompleteModule,
 	],
 	providers: [provideHttpClient(withInterceptorsFromDi())],
 })

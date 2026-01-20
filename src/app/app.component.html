@@ -41,7 +41,33 @@
 			type="text"
 			placeholder="{{ searchType === 'movie' ? 'Rechercher des films...' : 'Rechercher des séries...' }}"
 			(keyup.enter)="search(searchInput.value)"
+			[matAutocomplete]="auto"
+			(input)="searchInput.value.length >= 3 ? preSearch(searchInput.value) : (preSearchResults = [])"
 		/>
+		<mat-autocomplete
+			#auto="matAutocomplete"
+			class="mat-autocomplete-custom"
+			panelWidth="40vw"
+			(optionSelected)="search($event.option.value)"
+		>
+			@for (option of preSearchResults | slice: 0 : 5; track option.id) {
+				<mat-option [value]="option.title || option.name" style="height: auto; padding: 5px 16px">
+					<div style="display: flex; align-items: center; gap: 10px">
+						@if (option.poster_path) {
+							<img
+								[src]="'https://image.tmdb.org/t/p/w92' + option.poster_path"
+								[alt]="option.title || option.name"
+								style="height: 15vh; object-fit: cover; border-radius: 0.8rem"
+							/>
+						}
+						<span>{{ option.title || option.name }}</span>
+						<mat-card-subtitle [ngStyle]="getNoteColor(option.vote_average)" class="note">
+							{{ option.vote_average | number: '1.0-1' }}
+						</mat-card-subtitle>
+					</div>
+				</mat-option>
+			}
+		</mat-autocomplete>
 		<button mat-icon-button (click)="search(searchInput.value)">
 			<mat-icon>search</mat-icon>
 		</button>
