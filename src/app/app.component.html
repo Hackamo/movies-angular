@@ -43,9 +43,11 @@
 	<div class="search-bar hide-on-mobile">
 		<input
 			#searchInput
+			#trigger="matAutocompleteTrigger"
 			type="text"
 			placeholder="{{ searchType === 'movie' ? 'Rechercher des films...' : 'Rechercher des séries...' }}"
-			(keyup.enter)="search(searchInput.value)"
+			(keyup.enter)="search(searchInput.value); trigger.closePanel()"
+			(click)="searchInput.select()"
 			[matAutocomplete]="auto"
 			(input)="searchInput.value.length >= 3 ? preSearch(searchInput.value) : (preSearchResults = [])"
 		/>
@@ -96,12 +98,16 @@
 	<form
 		class="search-bar"
 		style="width: 100%; margin-right: 0"
-		(submit)="$event.preventDefault(); search(searchInputMobile.value); searchInputMobile.blur()"
+		(submit)="
+			$event.preventDefault(); search(searchInputMobile.value); searchInputMobile.blur(); triggerMobile.closePanel()
+		"
 	>
 		<input
 			#searchInputMobile
+			#triggerMobile="matAutocompleteTrigger"
 			type="search"
 			placeholder="{{ searchType === 'movie' ? 'Rechercher des films...' : 'Rechercher des séries...' }}"
+			(click)="searchInputMobile.select()"
 			[matAutocomplete]="autoMobile"
 			style="width: 100%"
 			(input)="searchInputMobile.value.length >= 3 ? preSearch(searchInputMobile.value) : (preSearchResults = [])"
