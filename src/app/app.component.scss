@@ -5,6 +5,11 @@
 	margin: 0;
 }
 
+::ng-deep .mat-toolbar-single-row {
+	flex-wrap: wrap !important;
+	justify-content: flex-end !important;
+}
+
 .title-toolbar {
 	padding: 1rem;
 }
@@ -68,7 +73,7 @@
 	}
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 	.hide-on-mobile {
 		display: none;
 	}
@@ -81,7 +86,7 @@
 	justify-content: center;
 }
 
-@media (min-width: 601px) {
+@media (min-width: 801px) {
 	.hide-on-desktop {
 		display: none;
 	}

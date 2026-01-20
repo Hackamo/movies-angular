@@ -2,8 +2,10 @@
 	max-width: 1200px;
 	margin: 2rem auto;
 	padding: 0 1rem;
+	@media (max-width: 601px) {
+		padding: 0 0rem;
+	}
 }
-
 .mat-card {
 	background-color: #ffffff;
 	color: #333333;
@@ -205,12 +207,15 @@ mat-card-content {
 	}
 
 	.cast {
-		grid-template-columns: repeat(2, 1fr);
-		gap: 10px;
+		grid-template-columns: repeat(auto-fill, minmax(120px, 2fr));
+		gap: 2px;
 	}
-
 	.actor,
 	.actor-spinner {
-		height: 200px;
+		height: 140px;
+	}
+
+	mat-card-subtitle {
+		font-size: 0.8rem;
 	}
 }
