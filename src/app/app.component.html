@@ -93,12 +93,15 @@
 </mat-toolbar>
 
 <div class="search-bar-mobile hide-on-desktop">
-	<div class="search-bar" style="width: 100%; margin-right: 0">
+	<form
+		class="search-bar"
+		style="width: 100%; margin-right: 0"
+		(submit)="$event.preventDefault(); search(searchInputMobile.value)"
+	>
 		<input
 			#searchInputMobile
-			type="text"
+			type="search"
 			placeholder="{{ searchType === 'movie' ? 'Rechercher des films...' : 'Rechercher des séries...' }}"
-			(keyup.enter)="search(searchInputMobile.value)"
 			[matAutocomplete]="autoMobile"
 			style="width: 100%"
 			(input)="searchInputMobile.value.length >= 3 ? preSearch(searchInputMobile.value) : (preSearchResults = [])"
@@ -110,13 +113,13 @@
 			(optionSelected)="search($event.option.value)"
 		>
 			@for (option of preSearchResults | slice: 0 : 5; track option.id) {
-				<mat-option [value]="option.title || option.name" style="height: auto; padding: 5px 16px">
-					<div style="display: flex; align-items: center; gap: 10px">
+				<mat-option [value]="option.title || option.name" style="height: auto; padding: 8px 8px; display: block">
+					<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
 						@if (option.poster_path) {
 							<img
 								[src]="'https://image.tmdb.org/t/p/w92' + option.poster_path"
 								[alt]="option.title || option.name"
-								style="height: 15vh; object-fit: cover; border-radius: 0.8rem"
+								style="height: 8vh; object-fit: cover; border-radius: 0.8rem"
 							/>
 						}
 						<span>{{ option.title || option.name }}</span>
@@ -127,10 +130,10 @@
 				</mat-option>
 			}
 		</mat-autocomplete>
-		<button mat-icon-button (click)="search(searchInputMobile.value)">
+		<button mat-icon-button type="submit">
 			<mat-icon>search</mat-icon>
 		</button>
-	</div>
+	</form>
 </div>
 
 <router-outlet></router-outlet>

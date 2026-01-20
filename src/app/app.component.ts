@@ -33,11 +33,11 @@ export class AppComponent {
 		window.location.reload()
 	}
 
-	toggleProviders() {
-		this.mediaService.filterByProviders = !this.mediaService.filterByProviders
-		localStorage.setItem('filterByProviders', String(this.mediaService.filterByProviders))
-		window.location.reload()
-	}
+	// toggleProviders() {
+	// 	this.mediaService.filterByProviders = !this.mediaService.filterByProviders
+	// 	localStorage.setItem('filterByProviders', String(this.mediaService.filterByProviders))
+	// 	window.location.reload()
+	// }
 
 	toggleSearchType() {
 		this.searchType = this.searchType === 'movie' ? 'serie' : 'movie'

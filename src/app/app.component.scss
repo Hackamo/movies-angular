@@ -77,10 +77,6 @@
 	.hide-on-mobile {
 		display: none;
 	}
-
-	::ngdeep .mat-mdc-autocomplete-trigger {
-		width: 70vw !important;
-	}
 }
 
 .search-bar-mobile {
@@ -93,5 +89,9 @@
 @media (min-width: 801px) {
 	.hide-on-desktop {
 		display: none;
+	}
+	::ng-deep .mat-mdc-autocomplete-panel {
+		max-height: 40vh !important;
+		border-radius: 1rem !important;
 	}
 }

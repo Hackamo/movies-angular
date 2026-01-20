@@ -13,7 +13,7 @@ export class MediaService {
 	api_genre_fr = '/genre/movie/list?api_key=' + this.api_key + ''
 	video_key = ''
 	language = localStorage.getItem('language') || 'fr'
-	filterByProviders = localStorage.getItem('filterByProviders') !== 'false'
+	// filterByProviders = localStorage.getItem('filterByProviders') !== 'false'
 	api_popularity_movie =
 		'/discover/movie?api_key=' + this.api_key + '&sort_by=popularity.desc&include_adult=false&include_video=false'
 	api_popularity_serie =
@@ -54,9 +54,9 @@ export class MediaService {
 
 	getPopular(type: 'movie' | 'serie', pagination: number): Observable<any> {
 		let endpoint = type === 'movie' ? this.api_popularity_movie : this.api_popularity_serie
-		if (this.filterByProviders) {
-			endpoint += '&with_watch_providers=8%7C337%7C119%7C350%7C283&watch_region=' + this.language.toUpperCase()
-		}
+		// if (this.filterByProviders) {
+		// 	endpoint += '&with_watch_providers=8%7C337%7C119%7C350%7C283&watch_region=' + this.language.toUpperCase()
+		// }
 		return this.httpClient.get<any>(this.api_url + endpoint + '&page=' + pagination + '&language=' + this.language)
 	}
 
