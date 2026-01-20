@@ -1,18 +1,18 @@
 // src/app/user.service.ts
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import * as moviesData from '../../assets/response.json';
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Observable, of } from 'rxjs'
+import * as moviesData from '../../assets/response.json'
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class MockService {
-  data = moviesData;
+	data = moviesData
 
-  constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) {}
 
-  getMovies(pagination: number): Observable<any> {
-    return of(this.data);
-  }
+	getMovies(pagination: number): Observable<any> {
+		return of(this.data)
+	}
 }

@@ -1,73 +1,60 @@
 <mat-toolbar class="toolbar">
-  <button mat-icon-button (click)="goBack()">
-    <mat-icon>arrow_back</mat-icon>
-  </button>
-  <h1
-    class="title-toolbar"
-    routerLink="movies"
-    routerLinkActive="active"
-    ariaCurrentWhenActive="page"
-    style="cursor: pointer"
-  >
-    Films
-  </h1>
+	<button mat-icon-button (click)="goBack()">
+		<mat-icon>arrow_back</mat-icon>
+	</button>
+	<h1
+		class="title-toolbar"
+		routerLink="movies"
+		routerLinkActive="active"
+		ariaCurrentWhenActive="page"
+		style="cursor: pointer"
+	>
+		Films
+	</h1>
 
-  <h1
-    class="title-toolbar"
-    routerLink="series"
-    routerLinkActive="active"
-    ariaCurrentWhenActive="page"
-    style="cursor: pointer"
-  >
-    Séries
-  </h1>
+	<h1
+		class="title-toolbar"
+		routerLink="series"
+		routerLinkActive="active"
+		ariaCurrentWhenActive="page"
+		style="cursor: pointer"
+	>
+		Séries
+	</h1>
 
-  <button
-    mat-button
-    [matMenuTriggerFor]="menu"
-    class="title-toolbar"
-    style="font-size: 1em; font-weight: normal"
-  >
-    Nouveautés
-    <mat-icon>arrow_drop_down</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="release">Films</button>
-    <button mat-menu-item routerLink="release-series">Séries</button>
-  </mat-menu>
-  <span style="flex: 1 1 auto"></span>
-  <div class="search-bar">
-    <input
-      #searchInput
-      type="text"
-      placeholder="{{
-        searchType === 'movie'
-          ? 'Rechercher des films...'
-          : 'Rechercher des séries...'
-      }}"
-      (keyup.enter)="search(searchInput.value)"
-    />
-    <button mat-icon-button (click)="search(searchInput.value)">
-      <mat-icon>search</mat-icon>
-    </button>
-  </div>
-  <button
-    mat-icon-button
-    (click)="toggleSearchType()"
-    [matTooltip]="
-      searchType === 'movie' ? 'Rechercher des séries' : 'Rechercher des films'
-    "
-  >
-    <mat-icon>{{ searchType === "movie" ? "movie" : "tv" }}</mat-icon>
-  </button>
-  <button mat-icon-button (click)="toggleProviders()">
-    <mat-icon>{{
-      mediaService.filterByProviders ? "filter_alt" : "filter_alt_off"
-    }}</mat-icon>
-  </button>
-  <button mat-button (click)="switchLanguage()">
-    {{ mediaService.language === "fr" ? "FR" : "EN" }}
-  </button>
+	<button mat-button [matMenuTriggerFor]="menu" class="title-toolbar" style="font-size: 1em; font-weight: normal">
+		Nouveautés
+		<mat-icon>arrow_drop_down</mat-icon>
+	</button>
+	<mat-menu #menu="matMenu">
+		<button mat-menu-item routerLink="release">Films</button>
+		<button mat-menu-item routerLink="release-series">Séries</button>
+	</mat-menu>
+	<span style="flex: 1 1 auto"></span>
+	<div class="search-bar">
+		<input
+			#searchInput
+			type="text"
+			placeholder="{{ searchType === 'movie' ? 'Rechercher des films...' : 'Rechercher des séries...' }}"
+			(keyup.enter)="search(searchInput.value)"
+		/>
+		<button mat-icon-button (click)="search(searchInput.value)">
+			<mat-icon>search</mat-icon>
+		</button>
+	</div>
+	<button
+		mat-icon-button
+		(click)="toggleSearchType()"
+		[matTooltip]="searchType === 'movie' ? 'Rechercher des séries' : 'Rechercher des films'"
+	>
+		<mat-icon>{{ searchType === 'movie' ? 'movie' : 'tv' }}</mat-icon>
+	</button>
+	<button mat-icon-button (click)="toggleProviders()">
+		<mat-icon>{{ mediaService.filterByProviders ? 'filter_alt' : 'filter_alt_off' }}</mat-icon>
+	</button>
+	<button mat-button (click)="switchLanguage()">
+		{{ mediaService.language === 'fr' ? 'FR' : 'EN' }}
+	</button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>

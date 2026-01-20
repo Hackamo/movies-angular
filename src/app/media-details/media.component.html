@@ -1,86 +1,61 @@
 @if (!isLoaded) {
-  <div>
-    <mat-progress-spinner class="spinner" color="accent" mode="indeterminate">
-    </mat-progress-spinner>
-  </div>
+	<div>
+		<mat-progress-spinner class="spinner" color="accent" mode="indeterminate"> </mat-progress-spinner>
+	</div>
 }
 @if (isLoaded) {
-  <div class="details-movie-container">
-    <mat-card
-      [ngClass]="{ 'is-phone-portrait': isPhonePortrait }"
-      class="mat-card"
-    >
-      <img
-        mat-card-image
-        src="https://image.tmdb.org/t/p/w1280//{{
-          this.mediaDetails.backdrop_path
-        }}"
-      />
-      <mat-card-title class="title">{{
-        mediaDetails.title || mediaDetails.name
-      }}</mat-card-title>
-      <mat-card-header>
-        @for (genre of this.genres; track genre) {
-          <div>
-            <div class="genre">{{ genre }}</div>
-          </div>
-        }
-      </mat-card-header>
-      <mat-card-header
-        >Date de sortie:
-        {{
-          mediaDetails.release_date || mediaDetails.first_air_date | date
-        }}</mat-card-header
-      >
-      <mat-card-subtitle class="note">
-        {{ mediaDetails.vote_average | number: "1.1-1" }}
-      </mat-card-subtitle>
-      <mat-card-content>
-        <p>
-          {{ mediaDetails.overview }}
-        </p>
-        @if (isVideoLoaded) {
-          <iframe
-            width="80%"
-            height="800"
-            class="iframe"
-            [src]="videoSafeUrl"
-            allow="
-              accelerometer;
-              autoplay;
-              encrypted-media;
-              gyroscope;
-              picture-in-picture;
-            "
-            allowfullscreen
-          ></iframe>
-        }
-        <div class="cast">
-          @for (cast of castingList; track cast; let i = $index) {
-            <mat-card class="actorcard">
-              <mat-card-subtitle>{{ cast.name }}</mat-card-subtitle>
-              <mat-card-content>
-                @if (!imageLoadingStates[i]) {
-                  <div class="actor-spinner">
-                    <mat-progress-spinner
-                      mode="indeterminate"
-                      diameter="40"
-                    ></mat-progress-spinner>
-                  </div>
-                }
-                <img
-                  class="actor"
-                  mat-card-image
-                  [class.hidden]="!imageLoadingStates[i]"
-                  (load)="imageLoadingStates[i] = true"
-                  src="https://image.tmdb.org/t/p/w185//{{
-                    cast.profile_path
-                  }}"
-              /></mat-card-content>
-            </mat-card>
-          }
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
+	<div class="details-movie-container">
+		<mat-card [ngClass]="{ 'is-phone-portrait': isPhonePortrait }" class="mat-card">
+			<img mat-card-image src="https://image.tmdb.org/t/p/w1280//{{ this.mediaDetails.backdrop_path }}" />
+			<mat-card-title class="title">{{ mediaDetails.title || mediaDetails.name }}</mat-card-title>
+			<mat-card-header>
+				@for (genre of this.genres; track genre) {
+					<div>
+						<div class="genre">{{ genre }}</div>
+					</div>
+				}
+			</mat-card-header>
+			<mat-card-header
+				>Date de sortie: {{ mediaDetails.release_date || mediaDetails.first_air_date | date }}</mat-card-header
+			>
+			<mat-card-subtitle class="note">
+				{{ mediaDetails.vote_average | number: '1.1-1' }}
+			</mat-card-subtitle>
+			<mat-card-content>
+				<p>
+					{{ mediaDetails.overview }}
+				</p>
+				@if (isVideoLoaded) {
+					<iframe
+						width="80%"
+						height="800"
+						class="iframe"
+						[src]="videoSafeUrl"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+					></iframe>
+				}
+				<div class="cast">
+					@for (cast of castingList; track cast; let i = $index) {
+						<mat-card class="actorcard">
+							<mat-card-subtitle>{{ cast.name }}</mat-card-subtitle>
+							<mat-card-content>
+								@if (!imageLoadingStates[i]) {
+									<div class="actor-spinner">
+										<mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+									</div>
+								}
+								<img
+									class="actor"
+									mat-card-image
+									[class.hidden]="!imageLoadingStates[i]"
+									(load)="imageLoadingStates[i] = true"
+									src="https://image.tmdb.org/t/p/w185//{{ cast.profile_path }}"
+							/></mat-card-content>
+						</mat-card>
+					}
+				</div>
+			</mat-card-content>
+		</mat-card>
+	</div>
 }

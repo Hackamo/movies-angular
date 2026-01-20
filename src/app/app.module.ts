@@ -1,41 +1,38 @@
-import {
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { BrowserModule } from '@angular/platform-browser';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
+import { NgModule } from '@angular/core'
+import { MatCardModule } from '@angular/material/card'
+import { BrowserModule } from '@angular/platform-browser'
 
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { AppRoutingModule } from './app-routing.module';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { AppComponent } from './app.component';
-import { SafePipe } from './services/pipe';
+import { LayoutModule } from '@angular/cdk/layout'
+import { MatButtonModule } from '@angular/material/button'
+import { MatDialogModule } from '@angular/material/dialog'
+import { MatGridListModule } from '@angular/material/grid-list'
+import { MatIconModule } from '@angular/material/icon'
+import { MatMenuModule } from '@angular/material/menu'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { AppRoutingModule } from './app-routing.module'
+import { MatTooltipModule } from '@angular/material/tooltip'
+import { AppComponent } from './app.component'
+import { SafePipe } from './services/pipe'
 
 @NgModule({
-  declarations: [AppComponent, SafePipe],
-  bootstrap: [AppComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatCardModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatGridListModule,
-    MatButtonModule,
-    MatDialogModule,
-    LayoutModule,
-    MatMenuModule,
-    MatProgressSpinnerModule,
-    MatTooltipModule,
-  ],
-  providers: [provideHttpClient(withInterceptorsFromDi())],
+	declarations: [AppComponent, SafePipe],
+	bootstrap: [AppComponent],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		MatCardModule,
+		MatToolbarModule,
+		MatIconModule,
+		MatGridListModule,
+		MatButtonModule,
+		MatDialogModule,
+		LayoutModule,
+		MatMenuModule,
+		MatProgressSpinnerModule,
+		MatTooltipModule,
+	],
+	providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class AppModule {}

@@ -43,8 +43,8 @@ Components check `Breakpoints.HandsetPortrait` for mobile layout:
 
 ```typescript
 this.responsive.observe(Breakpoints.HandsetPortrait).subscribe((result) => {
-  this.isPhonePortrait = result.matches;
-});
+	this.isPhonePortrait = result.matches
+})
 ```
 
 ### Data Handling

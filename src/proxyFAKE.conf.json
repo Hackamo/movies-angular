@@ -1,6 +1,0 @@
-{
-  "/*": {
-    "target": "https://api.themoviedb.org",
-    "secure": false
-  }
-}

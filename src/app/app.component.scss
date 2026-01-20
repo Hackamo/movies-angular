@@ -1,32 +1,32 @@
 .toolbar {
-  background: var(--primary-gradient);
-  color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  margin: 0;
+	background: var(--primary-gradient);
+	color: #ffffff;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+	margin: 0;
 }
 
 .title-toolbar {
-  padding: 1rem;
+	padding: 1rem;
 }
 
 .search-bar {
-  background: rgba(255, 124, 124, 0.445);
-  border-radius: 4px;
-  padding: 0 8px;
-  display: flex;
-  align-items: center;
-  margin-right: 16px;
+	background: rgba(255, 124, 124, 0.445);
+	border-radius: 4px;
+	padding: 0 8px;
+	display: flex;
+	align-items: center;
+	margin-right: 16px;
 
-  input {
-    background: transparent;
-    border: none;
-    color: white;
-    outline: none;
-    padding: 8px;
-    font-family: inherit;
+	input {
+		background: transparent;
+		border: none;
+		color: white;
+		outline: none;
+		padding: 8px;
+		font-family: inherit;
 
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-    }
-  }
+		&::placeholder {
+			color: rgba(255, 255, 255, 0.7);
+		}
+	}
 }

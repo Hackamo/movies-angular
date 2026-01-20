@@ -1,6 +1,7 @@
 # MoviesAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.6.
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## Development server
 
