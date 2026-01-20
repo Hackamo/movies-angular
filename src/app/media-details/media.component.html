@@ -6,7 +6,12 @@
 @if (isLoaded) {
 	<div class="details-movie-container">
 		<mat-card [ngClass]="{ 'is-phone-portrait': isPhonePortrait }" class="mat-card">
-			<img mat-card-image src="https://image.tmdb.org/t/p/w1280//{{ this.mediaDetails.backdrop_path }}" />
+			@if (isPhonePortrait) {
+				<img mat-card-image src="https://image.tmdb.org/t/p/w500//{{ this.mediaDetails.backdrop_path }}" />
+			}
+			@if (!isPhonePortrait) {
+				<img mat-card-image src="https://image.tmdb.org/t/p/w1280//{{ this.mediaDetails.backdrop_path }}" />
+			}
 			<mat-card-title class="title">{{ mediaDetails.title || mediaDetails.name }}</mat-card-title>
 			<mat-card-header>
 				@for (genre of this.genres; track genre) {
