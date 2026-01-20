@@ -2,6 +2,10 @@
 	<button mat-icon-button (click)="goBack()">
 		<mat-icon>arrow_back</mat-icon>
 	</button>
+
+	<button mat-icon-button (click)="goForward()">
+		<mat-icon>arrow_forward</mat-icon>
+	</button>
 	<h1
 		class="title-toolbar"
 		routerLink="movies"
@@ -23,7 +27,7 @@
 	</h1>
 
 	<button mat-button [matMenuTriggerFor]="menu" class="title-toolbar" style="font-size: 1em; font-weight: normal">
-		Nouveautés
+		News
 		<mat-icon>arrow_drop_down</mat-icon>
 	</button>
 	<mat-menu #menu="matMenu">

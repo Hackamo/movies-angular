@@ -21,6 +21,9 @@ export class AppComponent {
 	goBack() {
 		this.location.back()
 	}
+	goForward() {
+		this.location.forward()
+	}
 
 	switchLanguage() {
 		const newLang = this.mediaService.language === 'fr' ? 'en' : 'fr'

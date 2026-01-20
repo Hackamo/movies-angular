@@ -16,28 +16,59 @@
 				}
 			</mat-card-header>
 			<mat-card-header
-				>Date de sortie: {{ mediaDetails.release_date || mediaDetails.first_air_date | date }}</mat-card-header
+				>Date de sortie: {{ mediaDetails.release_date || mediaDetails.first_air_date | date }}
+				<div class="note-container">
+					<mat-card-subtitle class="note"> {{ mediaDetails.vote_average | number: '1.1-1' }} </mat-card-subtitle>
+					<span>based on {{ mediaDetails.vote_count }} votes</span>
+				</div></mat-card-header
 			>
-			<mat-card-subtitle class="note">
-				{{ mediaDetails.vote_average | number: '1.1-1' }}
-			</mat-card-subtitle>
+
 			<mat-card-content>
 				<p>
 					{{ mediaDetails.overview }}
 				</p>
-				@if (isVideoLoaded) {
+				@if (productionCompanies.length) {
+					<span><strong>Production:</strong> {{ productionCompanies.join(', ') }}</span>
+				}
+				@if (productionCountries.length) {
+					<span><strong>Pays:</strong> {{ productionCountries.join(', ') }}</span>
+				}
+				@if (spokenLanguages.length) {
+					<span><strong>Langues:</strong> {{ spokenLanguages.join(', ') }}</span>
+				}
+				@if (mediaDetails.runtime) {
+					<span><strong>Durée:</strong> {{ mediaDetails.runtime }} min</span>
+				}
+
+				@if (mediaDetails.budget) {
+					<span><strong>Budget:</strong> {{ mediaDetails.budget | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
+				}
+				@if (mediaDetails.revenue) {
+					<span><strong>Recette:</strong> {{ mediaDetails.revenue | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
+				}
+				@if (isVideoLoaded1) {
 					<iframe
 						width="80%"
 						height="800"
 						class="iframe"
-						[src]="videoSafeUrl"
+						[src]="videoSafeUrl1"
+						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+					></iframe>
+				}
+				@if (isVideoLoaded2) {
+					<iframe
+						width="80%"
+						height="800"
+						class="iframe"
+						[src]="videoSafeUrl2"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen
 					></iframe>
 				}
 				<div class="cast">
-					@for (cast of castingList; track cast; let i = $index) {
-						<mat-card class="actorcard">
+					@for (cast of castingList.slice(0, showAllCast ? castingList.length : (isTablet ? 10 : 6)); track cast; let i = $index) {
+						<mat-card class="actorcard" [routerLink]="['/person', cast.id]">
 							<mat-card-subtitle>{{ cast.name }}</mat-card-subtitle>
 							<mat-card-content>
 								@if (!imageLoadingStates[i]) {
@@ -55,6 +86,11 @@
 						</mat-card>
 					}
 				</div>
+				@if (castingList.length > (isTablet ? 10 : 6)) {
+					<div class="view-more-container">
+						<button mat-stroked-button color="primary" (click)="toggleCast()">{{ showAllCast ? 'Voir moins' : 'Voir plus' }}</button>
+					</div>
+				}
 			</mat-card-content>
 		</mat-card>
 	</div>

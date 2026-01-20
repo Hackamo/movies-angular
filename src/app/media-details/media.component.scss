@@ -39,6 +39,7 @@
 
 // Container for genres and date
 mat-card-header {
+	font-family: Montserrat, sans-serif;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -52,6 +53,12 @@ mat-card-header {
 	}
 }
 
+.view-more-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 16px;
+}
+
 .genre {
 	background-color: #f0f2f5;
 	color: #555;
@@ -62,7 +69,11 @@ mat-card-header {
 	font-weight: 500;
 	display: inline-block;
 }
-
+.note-container {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
 .note {
 	background-color: #333;
 	color: #fff;
@@ -117,6 +128,7 @@ mat-card-content {
 		transform 0.2s,
 		box-shadow 0.2s;
 	overflow: hidden;
+	cursor: pointer;
 
 	&:hover {
 		transform: translateY(-4px);

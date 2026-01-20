@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from './app.component'
 import { MediaComponent } from './media-details/media.component'
+import { PersonComponent } from './person/person.component'
 
 const routes: Routes = [
 	{ path: '', redirectTo: 'movies', pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
 	},
 	{ path: 'movie/:id', component: MediaComponent },
 	{ path: 'serie/:id', component: MediaComponent },
+	{ path: 'person/:id', component: PersonComponent },
 ]
 
 @NgModule({
