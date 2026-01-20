@@ -46,7 +46,7 @@ export class MediaPageComponent implements OnInit {
     this.pagination++;
     if (this.searchQuery) {
       this.mediaService
-        .searchMovies(this.searchQuery, this.pagination)
+        .searchMedia(this.mediaType, this.searchQuery, this.pagination)
         .subscribe((data) => {
           this.medias.push(
             ...data.results.filter((media: any) => media.poster_path),

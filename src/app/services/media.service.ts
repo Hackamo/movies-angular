@@ -24,6 +24,7 @@ export class MediaService {
     this.api_key +
     '&sort_by=popularity.desc&include_adult=false&include_video=false';
   api_search = '/search/movie?&api_key=' + this.api_key + '&query=';
+  api_search_serie = '/search/tv?&api_key=' + this.api_key + '&query=';
   api_vote =
     '/discover/movie?api_key=' +
     this.api_key +
@@ -90,6 +91,28 @@ export class MediaService {
         '&page=' +
         pagination,
     );
+  }
+
+  searchSeries(query: string, pagination: number): Observable<any> {
+    return this.httpClient.get<any>(
+      this.api_url +
+        this.api_search_serie +
+        query +
+        '&language=' +
+        this.language +
+        '&page=' +
+        pagination,
+    );
+  }
+
+  searchMedia(
+    type: 'movie' | 'serie',
+    query: string,
+    pagination: number,
+  ): Observable<any> {
+    return type === 'movie'
+      ? this.searchMovies(query, pagination)
+      : this.searchSeries(query, pagination);
   }
 
   getReleaseMedia(

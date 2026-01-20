@@ -40,13 +40,26 @@
     <input
       #searchInput
       type="text"
-      placeholder="Search..."
+      placeholder="{{
+        searchType === 'movie'
+          ? 'Rechercher des films...'
+          : 'Rechercher des séries...'
+      }}"
       (keyup.enter)="search(searchInput.value)"
     />
     <button mat-icon-button (click)="search(searchInput.value)">
       <mat-icon>search</mat-icon>
     </button>
   </div>
+  <button
+    mat-icon-button
+    (click)="toggleSearchType()"
+    [matTooltip]="
+      searchType === 'movie' ? 'Rechercher des séries' : 'Rechercher des films'
+    "
+  >
+    <mat-icon>{{ searchType === "movie" ? "movie" : "tv" }}</mat-icon>
+  </button>
   <button mat-icon-button (click)="toggleProviders()">
     <mat-icon>{{
       mediaService.filterByProviders ? "filter_alt" : "filter_alt_off"

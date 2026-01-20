@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from './app-routing.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppComponent } from './app.component';
 import { SafePipe } from './services/pipe';
 
@@ -33,6 +34,7 @@ import { SafePipe } from './services/pipe';
     LayoutModule,
     MatMenuModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
   ],
   providers: [provideHttpClient(withInterceptorsFromDi())],
 })

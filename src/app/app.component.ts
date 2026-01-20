@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'movies-angular';
+  searchType: 'movie' | 'serie' =
+    (localStorage.getItem('searchType') as 'movie' | 'serie') || 'movie';
 
   constructor(
     private location: Location,
@@ -37,9 +39,15 @@ export class AppComponent {
     window.location.reload();
   }
 
+  toggleSearchType() {
+    this.searchType = this.searchType === 'movie' ? 'serie' : 'movie';
+    localStorage.setItem('searchType', this.searchType);
+  }
+
   search(query: string) {
     if (query.trim()) {
-      this.router.navigate(['/movies'], { queryParams: { q: query } });
+      const path = this.searchType === 'movie' ? '/movies' : '/series';
+      this.router.navigate([path], { queryParams: { q: query } });
     }
   }
 }
