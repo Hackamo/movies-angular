@@ -17,6 +17,7 @@
 	align-items: center;
 	padding: 1rem;
 	min-height: 50px;
+	height: 60px;
 }
 
 .title {
@@ -43,13 +44,14 @@
 	margin: 0.2rem 0.2rem 0.2rem;
 	justify-content: center;
 }
-.is-phone-portrait .movie-info {
+.is-phone-portrait .media-info {
 	padding: 8px;
 }
 
 .is-phone-portrait .title {
-	font-size: 12px;
-	width: 5rem;
+	font-size: 11px;
+
+	line-height: 1;
 }
 .is-phone-portrait .note {
 	font-size: 10px;

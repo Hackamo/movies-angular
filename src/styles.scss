@@ -9,6 +9,10 @@ $my-typography: mat.m2-define-typography-config(
 	$font-family: 'Montserrat, sans-serif',
 );
 
+html {
+	scroll-behavior: smooth;
+}
+
 $my-theme: mat.m2-define-dark-theme(
 	(
 		color: (

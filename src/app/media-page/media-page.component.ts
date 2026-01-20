@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { Component, HostListener, OnInit } from '@angular/core'
+import { ActivatedRoute, Scroll } from '@angular/router'
 import { Media } from '../models/media'
 import { MediaService } from '../services/media.service'
 import { MediaCardComponent } from '../media-card/media-card.component'
 import { InfiniteScrollModule } from 'ngx-infinite-scroll'
+import { ViewportScroller } from '@angular/common'
 import { combineLatest } from 'rxjs'
 
 @Component({
@@ -19,10 +20,12 @@ export class MediaPageComponent implements OnInit {
 	mediaType: 'movie' | 'serie' = 'movie'
 	searchQuery: string | null = null
 	filter: string = 'popular'
+	showScrollButton = false
 
 	constructor(
 		private mediaService: MediaService,
 		private route: ActivatedRoute,
+		private viewportScroller: ViewportScroller,
 	) {}
 
 	ngOnInit() {
@@ -34,6 +37,16 @@ export class MediaPageComponent implements OnInit {
 			this.pagination = 0
 			this.getMedias()
 		})
+	}
+
+	@HostListener('window:scroll')
+	onWindowScroll() {
+		// Show button when scrolled down 500px
+		this.showScrollButton = window.scrollY > 500
+	}
+
+	scrollToTop() {
+		this.viewportScroller.scrollToPosition([0, 0], { behavior: 'smooth' })
 	}
 
 	onScroll() {
