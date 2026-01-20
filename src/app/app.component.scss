@@ -77,6 +77,10 @@
 	.hide-on-mobile {
 		display: none;
 	}
+
+	::ngdeep .mat-mdc-autocomplete-trigger {
+		width: 70vw !important;
+	}
 }
 
 .search-bar-mobile {

@@ -7,7 +7,7 @@
 	<div class="details-movie-container">
 		<mat-card [ngClass]="{ 'is-phone-portrait': isPhonePortrait }" class="mat-card">
 			@if (isPhonePortrait) {
-				<img mat-card-image src="https://image.tmdb.org/t/p/w500//{{ this.mediaDetails.backdrop_path }}" />
+				<img mat-card-image src="https://image.tmdb.org/t/p/w780//{{ this.mediaDetails.backdrop_path }}" />
 			}
 			@if (!isPhonePortrait) {
 				<img mat-card-image src="https://image.tmdb.org/t/p/w1280//{{ this.mediaDetails.backdrop_path }}" />

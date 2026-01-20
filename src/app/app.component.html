@@ -100,12 +100,13 @@
 			placeholder="{{ searchType === 'movie' ? 'Rechercher des films...' : 'Rechercher des séries...' }}"
 			(keyup.enter)="search(searchInputMobile.value)"
 			[matAutocomplete]="autoMobile"
+			style="width: 100%"
 			(input)="searchInputMobile.value.length >= 3 ? preSearch(searchInputMobile.value) : (preSearchResults = [])"
 		/>
 		<mat-autocomplete
 			#autoMobile="matAutocomplete"
 			class="mat-autocomplete-custom"
-			panelWidth="90vw"
+			panelWidth="80vw"
 			(optionSelected)="search($event.option.value)"
 		>
 			@for (option of preSearchResults | slice: 0 : 5; track option.id) {
