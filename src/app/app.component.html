@@ -96,7 +96,7 @@
 	<form
 		class="search-bar"
 		style="width: 100%; margin-right: 0"
-		(submit)="$event.preventDefault(); search(searchInputMobile.value)"
+		(submit)="$event.preventDefault(); search(searchInputMobile.value); searchInputMobile.blur()"
 	>
 		<input
 			#searchInputMobile
@@ -110,7 +110,7 @@
 			#autoMobile="matAutocomplete"
 			class="mat-autocomplete-custom"
 			panelWidth="80vw"
-			(optionSelected)="search($event.option.value)"
+			(optionSelected)="search($event.option.value); searchInputMobile.blur()"
 		>
 			@for (option of preSearchResults | slice: 0 : 5; track option.id) {
 				<mat-option [value]="option.title || option.name" style="height: auto; padding: 8px 8px; display: block">
