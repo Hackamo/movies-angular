@@ -1,104 +1,93 @@
-@if (!isLoaded) {
+@if (!isLoaded()) {
 	<div>
 		<mat-progress-spinner class="spinner" color="accent" mode="indeterminate"> </mat-progress-spinner>
 	</div>
 }
-@if (isLoaded) {
+@if (isLoaded()) {
 	<div class="details-movie-container">
-		<mat-card [ngClass]="{ 'is-phone-portrait': isPhonePortrait }" class="mat-card">
-			@if (isPhonePortrait) {
-				<img mat-card-image src="https://image.tmdb.org/t/p/w780//{{ this.mediaDetails.backdrop_path }}" />
+		<mat-card [class.is-phone-portrait]="isPhonePortrait()" class="mat-card">
+			@if (isPhonePortrait()) {
+				<img mat-card-image [src]="'https://image.tmdb.org/t/p/w780/' + mediaDetails()?.backdrop_path" />
 			}
-			@if (!isPhonePortrait) {
-				<img mat-card-image src="https://image.tmdb.org/t/p/w1280//{{ this.mediaDetails.backdrop_path }}" />
+			@if (!isPhonePortrait()) {
+				<img mat-card-image [src]="'https://image.tmdb.org/t/p/w1280/' + mediaDetails()?.backdrop_path" />
 			}
-			<mat-card-title class="title">{{ mediaDetails.title || mediaDetails.name }}</mat-card-title>
+			<mat-card-title class="title">{{ mediaDetails()?.title || mediaDetails()?.name }}</mat-card-title>
 			<mat-card-header>
-				@for (genre of this.genres; track genre) {
+				@for (genre of genres(); track genre) {
 					<div>
 						<div class="genre">{{ genre }}</div>
 					</div>
 				}
 			</mat-card-header>
 			<mat-card-header
-				>Date de sortie: {{ mediaDetails.release_date || mediaDetails.first_air_date | date }}
+				>Date de sortie: {{ mediaDetails()?.release_date || mediaDetails()?.first_air_date | date }}
 				<div class="note-container">
-					<mat-card-subtitle class="note"> {{ mediaDetails.vote_average | number: '1.1-1' }} </mat-card-subtitle>
-					<span>{{ mediaDetails.vote_count }} votes</span>
+					<mat-card-subtitle class="note"> {{ mediaDetails()?.vote_average | number: '1.1-1' }} </mat-card-subtitle>
+					<span>{{ mediaDetails()?.vote_count }} votes</span>
 				</div></mat-card-header
 			>
 
 			<mat-card-content>
 				<p>
-					{{ mediaDetails.overview }}
+					{{ mediaDetails()?.overview }}
 				</p>
-				@if (productionCompanies.length) {
-					<span><strong>Production:</strong> {{ productionCompanies.join(', ') }}</span>
+				@if (productionCompanies().length) {
+					<span><strong>Production:</strong> {{ productionCompanies().join(', ') }}</span>
 				}
-				@if (productionCountries.length) {
-					<span><strong>Pays:</strong> {{ productionCountries.join(', ') }}</span>
+				@if (productionCountries().length) {
+					<span><strong>Pays:</strong> {{ productionCountries().join(', ') }}</span>
 				}
-				@if (spokenLanguages.length) {
-					<span><strong>Langues:</strong> {{ spokenLanguages.join(', ') }}</span>
+				@if (spokenLanguages().length) {
+					<span><strong>Langues:</strong> {{ spokenLanguages().join(', ') }}</span>
 				}
 
-				@if (mediaDetails.budget) {
-					<span><strong>Budget:</strong> {{ mediaDetails.budget | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
+				@if (mediaDetails()?.budget) {
+					<span><strong>Budget:</strong> {{ mediaDetails()?.budget | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
 				}
-				@if (mediaDetails.revenue) {
-					<span><strong>Recette:</strong> {{ mediaDetails.revenue | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
+				@if (mediaDetails()?.revenue) {
+					<span><strong>Recette:</strong> {{ mediaDetails()?.revenue | currency: 'USD' : 'symbol' : '1.0-0' }}</span>
 				}
-				@if (isVideoLoaded1) {
+				@if (isVideoLoaded1()) {
 					<iframe
 						width="80%"
 						height="800"
 						class="iframe"
-						[src]="videoSafeUrl1"
+						[src]="videoSafeUrl1()"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen
 					></iframe>
 				}
-				@if (isVideoLoaded2) {
+				@if (isVideoLoaded2()) {
 					<iframe
 						width="80%"
 						height="800"
 						class="iframe"
-						[src]="videoSafeUrl2"
+						[src]="videoSafeUrl2()"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen
 					></iframe>
 				}
-				@if (mediaDetails.runtime) {
-					<span><strong>Durée:</strong> {{ mediaDetails.runtime }} min</span>
+				@if (mediaDetails()?.runtime) {
+					<span><strong>Durée:</strong> {{ mediaDetails()?.runtime }} min</span>
 				}
 				<div class="cast">
 					@for (
-						cast of castingList.slice(0, showAllCast ? castingList.length : isTablet ? 10 : 6);
-						track cast;
-						let i = $index
+						cast of castingList().slice(0, showAllCast() ? castingList().length : isTablet() ? 10 : 6);
+						track cast.id
 					) {
 						<mat-card class="actorcard" [routerLink]="['/person', cast.id]">
 							<mat-card-subtitle>{{ cast.name }}</mat-card-subtitle>
 							<mat-card-content>
-								@if (!imageLoadingStates[i]) {
-									<div class="actor-spinner">
-										<mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
-									</div>
-								}
-								<img
-									class="actor"
-									mat-card-image
-									[class.hidden]="!imageLoadingStates[i]"
-									(load)="imageLoadingStates[i] = true"
-									src="https://image.tmdb.org/t/p/w185//{{ cast.profile_path }}"
+								<img class="actor" mat-card-image [src]="'https://image.tmdb.org/t/p/w185/' + cast.profile_path"
 							/></mat-card-content>
 						</mat-card>
 					}
 				</div>
-				@if (castingList.length > (isTablet ? 10 : 6)) {
+				@if (castingList().length > (isTablet() ? 10 : 6)) {
 					<div class="view-more-container">
 						<button mat-stroked-button color="primary" (click)="toggleCast()">
-							{{ showAllCast ? 'Voir moins' : 'Voir plus' }}
+							{{ showAllCast() ? 'Voir moins' : 'Voir plus' }}
 						</button>
 					</div>
 				}

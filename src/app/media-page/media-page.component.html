@@ -1,10 +1,10 @@
 <div class="main" infiniteScroll (scrolled)="onScroll()">
-	@for (media of medias; track media) {
+	@for (media of medias(); track media.id) {
 		<div>
 			<app-media-card [mediaInfos]="media"></app-media-card>
 		</div>
 	}
 </div>
-@if (showScrollButton) {
+@if (showScrollButton()) {
 	<button class="scroll-to-top" (click)="scrollToTop()">&#8593;</button>
 }

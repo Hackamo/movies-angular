@@ -1,36 +1,28 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
-import { DecimalPipe, NgClass, NgStyle } from '@angular/common'
-import { Component, Input } from '@angular/core'
-import { MatCard, MatCardModule } from '@angular/material/card'
-import { RouterLink } from '@angular/router'
-import { Media } from '../models/media'
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
+import { CommonModule, NgOptimizedImage } from '@angular/common'
+import { MatCardModule } from '@angular/material/card'
+import { RouterModule } from '@angular/router'
+import { MediaItem } from '../services/tmdb.models'
+
 @Component({
 	selector: 'app-media-card',
 	templateUrl: './media-card.component.html',
 	styleUrls: ['./media-card.component.scss'],
-	imports: [DecimalPipe, MatCardModule, NgClass, NgStyle, MatCard, RouterLink],
-	providers: [DecimalPipe],
 	standalone: true,
+	imports: [CommonModule, MatCardModule, RouterModule, NgOptimizedImage],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MediaCardComponent {
-	@Input() mediaInfos!: Media
-	routerType = ''
+	mediaInfos = input.required<MediaItem>()
 
-	isPhonePortrait!: boolean
+	routerType = computed(() => {
+		return this.mediaInfos().title ? 'movie' : 'serie'
+	})
 
-	constructor(private responsive: BreakpointObserver) {}
+	isPhonePortrait = computed(() => false)
 
-	ngOnInit() {
-		this.responsive.observe(Breakpoints.HandsetPortrait).subscribe((result) => {
-			this.isPhonePortrait = false
-			if (result.matches) {
-				this.isPhonePortrait = true
-			}
-		})
-		this.routerType = this.mediaInfos.title ? 'movie' : 'serie'
-	}
 	getNoteColor() {
-		const vote = Number(this.mediaInfos.vote_average)
+		const vote = this.mediaInfos().vote_average
 		if (vote > 7) {
 			return {
 				background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)',
