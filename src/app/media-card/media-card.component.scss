@@ -12,11 +12,10 @@
 
 .media-info {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
 	letter-spacing: 0.5px;
 	align-items: center;
 	padding: 1rem;
-	min-height: 50px;
 	height: 60px;
 }
 
@@ -26,7 +25,7 @@
 
 .note {
 	background: var(--accent-gradient);
-	border-radius: 3px;
+	border-radius: 25%;
 	padding: 0.3rem 0.5rem 0.3rem 0.5rem !important;
 	font-weight: bold;
 	color: #fff;
@@ -46,11 +45,12 @@
 
 .is-phone-portrait {
 	width: 11rem;
-	margin: 0.2rem 0.2rem 0.2rem;
+	margin: 0rem 0.2rem 0.4rem 0.2rem;
 	justify-content: center;
 }
 .is-phone-portrait .media-info {
 	padding: 8px;
+	height: fit-content;
 }
 
 .is-phone-portrait .title {

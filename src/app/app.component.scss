@@ -21,10 +21,9 @@
 }
 
 .search-bar-mobile {
-	background: var(--primary-gradient);
 	padding: 10px;
-	display: flex;
 	justify-content: center;
+	width: 100%;
 }
 
 @media (min-width: 801px) {

@@ -1,7 +1,6 @@
 @if (isMobile()) {
 	<form
 		class="search-bar"
-		style="width: 100%; margin-right: 0"
 		(submit)="
 			$event.preventDefault(); search(searchInputMobile.value); searchInputMobile.blur(); triggerMobile.closePanel()
 		"
@@ -19,7 +18,7 @@
 		<mat-autocomplete
 			#autoMobile="matAutocomplete"
 			class="mat-autocomplete-custom"
-			panelWidth="80vw"
+			panelWidth="90vw"
 			(optionSelected)="search($event.option.value); searchInputMobile.blur()"
 		>
 			@for (option of preSearchResults() | slice: 0 : 5; track option.id) {
