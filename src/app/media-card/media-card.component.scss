@@ -2,8 +2,8 @@
 	background-color: var(--bg-card);
 	color: var(--text-primary);
 	height: fit-content;
-	width: 22rem;
-	border-radius: 0.5rem;
+	max-width: 20rem;
+	border-radius: 1rem;
 	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
 	margin: 1rem 1rem 1rem;
 	overflow: hidden;
@@ -37,10 +37,15 @@
 		width: 15rem;
 		margin: 0.5rem;
 	}
+	img {
+		align-self: center;
+		height: max-content;
+		width: 100%;
+	}
 }
 
 .is-phone-portrait {
-	width: 8rem;
+	width: 11rem;
 	margin: 0.2rem 0.2rem 0.2rem;
 	justify-content: center;
 }
@@ -50,7 +55,6 @@
 
 .is-phone-portrait .title {
 	font-size: 11px;
-
 	line-height: 1;
 }
 .is-phone-portrait .note {

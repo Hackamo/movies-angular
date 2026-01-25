@@ -1,7 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core'
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core'
+import { toSignal } from '@angular/core/rxjs-interop'
 import { CommonModule, NgOptimizedImage } from '@angular/common'
 import { MatCardModule } from '@angular/material/card'
 import { RouterModule } from '@angular/router'
+import { map } from 'rxjs/operators'
 import { MediaItem } from '../services/tmdb.models'
 
 @Component({
@@ -13,13 +16,18 @@ import { MediaItem } from '../services/tmdb.models'
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MediaCardComponent {
+	private breakpointObserver = inject(BreakpointObserver)
+
 	mediaInfos = input.required<MediaItem>()
 
 	routerType = computed(() => {
 		return this.mediaInfos().title ? 'movie' : 'serie'
 	})
 
-	isPhonePortrait = computed(() => false)
+	isPhonePortrait = toSignal(
+		this.breakpointObserver.observe(Breakpoints.HandsetPortrait).pipe(map((result) => result.matches)),
+		{ initialValue: false },
+	)
 
 	getNoteColor() {
 		const vote = this.mediaInfos().vote_average
