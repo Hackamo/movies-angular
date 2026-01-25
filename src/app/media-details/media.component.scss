@@ -220,3 +220,36 @@ mat-card-content {
 		font-size: 0.8rem;
 	}
 }
+
+.scroll-to-top {
+	position: fixed;
+	bottom: 30px;
+	right: 50px;
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	background-color: #333; /* Or your theme color */
+	color: white;
+	border: none;
+	font-size: 24px;
+	cursor: pointer;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition:
+		opacity 0.3s,
+		transform 0.3s;
+	opacity: 0.9;
+
+	&:hover {
+		background-color: #555;
+		transform: scale(1.2);
+		box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+	}
+
+	&:active {
+		transform: scale(0.9-2px);
+	}
+}

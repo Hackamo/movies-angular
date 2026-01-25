@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
-import { CommonModule } from '@angular/common'
+import { CommonModule, ViewportScroller } from '@angular/common'
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, computed, inject, signal } from '@angular/core'
 import { MatCardModule } from '@angular/material/card'
 import { MatButtonModule } from '@angular/material/button'
@@ -16,12 +16,16 @@ import { Cast, MediaDetails } from '../services/tmdb.models'
 	styleUrls: ['./media.component.scss'],
 	imports: [CommonModule, MatCardModule, MatProgressSpinnerModule, MatButtonModule, RouterModule],
 	changeDetection: ChangeDetectionStrategy.OnPush,
+	host: {
+		'(window:scroll)': 'onWindowScroll()',
+	},
 })
 export class MediaComponent implements OnInit, OnDestroy {
 	private mediaService = inject(MediaService)
 	private responsive = inject(BreakpointObserver)
 	private domSanitizer = inject(DomSanitizer)
 	private route = inject(ActivatedRoute)
+	private viewportScroller = inject(ViewportScroller)
 
 	mediaDetails = signal<MediaDetails | null>(null)
 	castingList = signal<Cast[]>([])
@@ -30,6 +34,7 @@ export class MediaComponent implements OnInit, OnDestroy {
 	isPhonePortrait = signal(false)
 	isTablet = signal(false)
 	showAllCast = signal(false)
+	showScrollButton = signal(false)
 
 	isLoaded = computed(() => !!this.mediaDetails())
 	isVideoLoaded1 = computed(() => !!this.videoSafeUrl1())
@@ -63,6 +68,15 @@ export class MediaComponent implements OnInit, OnDestroy {
 				}
 			}),
 		)
+	}
+
+	scrollToTop() {
+		this.viewportScroller.scrollToPosition([0, 0], { behavior: 'smooth' })
+	}
+
+	onWindowScroll() {
+		// Show button when scrolled down 500px
+		this.showScrollButton.set(window.scrollY > 500)
 	}
 
 	private loadMedia(type: 'movie' | 'serie', id: string) {

@@ -92,6 +92,9 @@
 					</div>
 				}
 			</mat-card-content>
+			@if (showScrollButton()) {
+				<button class="scroll-to-top" (click)="scrollToTop()">&#8593;</button>
+			}
 		</mat-card>
 	</div>
 }
